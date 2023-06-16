@@ -1,0 +1,17 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>MacGrades</title>
+
+</head>
+<body>
+    <form method="POST" enctype="multipart/form-data" action="/upload" onsubmit="return getCourses()">
+        <input type="file" name="pdfFile" accept=".pdf">
+        <input type="submit" value="Upload">
+    </form>
+    <div id="courseList"></div>
+    <script src="main.js"></script>
+</body>
+
+</html>
