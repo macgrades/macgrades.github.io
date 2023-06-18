@@ -6,11 +6,11 @@
 
 </head>
 <body>
-    <form method="POST" enctype="multipart/form-data" action="/upload" onsubmit="return getCourses()">
-        <input type="file" name="pdfFile" accept=".pdf">
-        <input type="submit" value="Upload">
-    </form>
-    <div id="courseList"></div>
+    <h1>Transcript Upload</h1>
+    <input type="file" id = transcriptFile name="pdfFile" accept=".pdf">
+    <button id="submitBtn">Submit</button>
+
+    <div id="courseContainer"></div>
     <script src="main.js"></script>
 </body>
 

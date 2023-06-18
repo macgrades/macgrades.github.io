@@ -1,25 +1,32 @@
-function getCourses() {
-    fetch('/upload')
-        .then(response => response.json())
-        .then(data => {
-            // Parse the JSON response into a list of course objects
-            const courseList = JSON.parse(data);
+document.getElementById('submitBtn').addEventListener('click', function() {
+    const fileInput = document.getElementById('transcriptFile');
+    const file = fileInput.files[0];
 
-            // Display the course list on the screen
-            courseList.forEach(course => {
-                // Create HTML elements to display each course
-                const courseElement = document.createElement('div');
-                courseElement.innerHTML = `<p>Course Name: ${course.code}</p>
-                                 <p>Grade: ${course.grade}</p>
-                                 <p>Credits: ${course.units}</p>`;
-                document.getElementById('courseList').appendChild(courseElement);
-            });
+    if (file) {
+        const formData = new FormData();
+        formData.append('pdfFile', file);
 
-            // Implement functionality to add/delete courses as needed
-            // ...
+        fetch('/upload', {
+            method: 'POST',
+            body: formData
         })
-        .catch(error => {
-            // Handle error if the API call fails
-            console.error('Error:', error);
-        });
+            .then(response => response.json())
+            .then(data => {
+                console.log(data);
+                displayCourses(data);
+            })
+            .catch(error => {
+                console.error('Error:', error);
+            });
+    }
+});
+
+function displayCourses(courses) {
+    const container = document.getElementById('courseContainer');
+    container.innerHTML = '';
+    courses.forEach(course => {
+        const courseText = document.createElement('p');
+        courseText.textContent = `Course Name: ${course.code}, Grade: ${course.grade}, Credits: ${course.units}`;
+        container.appendChild(courseText);
+    });
 }
