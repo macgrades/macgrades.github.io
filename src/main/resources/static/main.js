@@ -12,6 +12,7 @@ document.getElementById('submitBtn').addEventListener('click', function() {
         })
             .then(response => response.json())
             .then(data => {
+                data.reverse();
                 data.forEach(course => {
                     course.id = crypto.randomUUID();
                     courseList.push(course);
@@ -28,12 +29,16 @@ document.getElementById('submitBtn').addEventListener('click', function() {
 //add courses individually
 document.getElementById('addCourseBtn').addEventListener('click', function() {
    const courseNameInput = document.getElementById("courseName");
-   let courseName = courseNameInput.value;
    const gradeInput = document.getElementById("grade");
-   const grade = gradeInput.value;
    const unitsInput = document.getElementById("units");
+   const errorContainer = document.getElementById("inputError");
+
+   let courseName = courseNameInput.value;
+   const grade = gradeInput.value;
    const units = unitsInput.value;
-   if (grade && units) {
+
+   if (grade && units && !isNaN(units)) {
+       errorContainer.innerHTML = '';
        if (!courseName) {
            courseName = `Course ${courseList.length+1}`;
        }
@@ -47,8 +52,10 @@ document.getElementById('addCourseBtn').addEventListener('click', function() {
        courseList.push(course);
        displayCourses();
        courseNameInput.value = '';
+   } else {
+       errorContainer.innerHTML = 'Enter valid course info';
+       errorContainer.style.color = 'red';
    }
-
 });
 
 //Clear courses and clear gpa calculation
