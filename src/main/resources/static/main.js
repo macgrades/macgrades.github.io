@@ -12,13 +12,17 @@ document.getElementById('submitBtn').addEventListener('click', function() {
         })
             .then(response => response.json())
             .then(data => {
-                console.log(data);
-                displayCourses(data);
+                data.forEach(course => {
+                    course.id = crypto.randomUUID();
+                    courseList.push(course);
+                })
+                displayCourses();
             })
             .catch(error => {
                 console.error('Error:', error);
             });
     }
+    fileInput.value = '';
 });
 
 //add courses individually
@@ -33,18 +37,16 @@ document.getElementById('addCourseBtn').addEventListener('click', function() {
        if (!courseName) {
            courseName = `Course ${courseList.length+1}`;
        }
-       const container = document.getElementById('courseContainer');
-       const courseText = document.createElement('p');
-       courseText.textContent = `Course Name: ${courseName}, Grade: ${grade}, Credits: ${units}`;
-       container.prepend(courseText);
        let course= {
            code: courseName,
            units: units,
            grade: grade,
-           built: true
-       }
+           built: true,
+           id: crypto.randomUUID()
+       };
        courseList.push(course);
-       displayGPA()
+       displayCourses();
+       courseNameInput.value = '';
    }
 
 });
@@ -60,14 +62,29 @@ document.getElementById("clearCourses").addEventListener('click', function() {
 
 let courseList = [];
 
-function displayCourses(courses) {
+function displayCourses() {
     const container = document.getElementById('courseContainer');
-    courses.forEach(course => {
-        courseList.push(course);
+    container.innerHTML = '';
+    courseList.forEach(course => {
         const courseText = document.createElement('p');
         courseText.textContent = `Course Name: ${course.code}, Grade: ${course.grade}, Credits: ${course.units}`;
-        container.appendChild(courseText);
+        courseText.style.display = 'inline-block';
+
+        const delButton = document.createElement('button');
+        delButton.id = course.id;
+        delButton.innerHTML='X';
+        delButton.style.display = 'inline-block';
+        delButton.addEventListener('click', function() {
+            deleteCourse(course.id);
+        });
+
+        const wrapper = document.createElement('div');
+        wrapper.appendChild(courseText);
+        wrapper.appendChild(delButton);
+
+        container.prepend(wrapper);
     });
+    console.log(courseList);
     displayGPA();
 }
 
@@ -106,6 +123,20 @@ function displayGPA() {
     standardGPAText.textContent = `4.0 Scale GPA: ${standardGPA.toFixed(2)}`;
     gpaContainer.append(standardGPAText);
     gpaContainer.append(macGPAText);
+}
+
+function deleteCourse(courseID) {
+    const index = courseList.findIndex(course => course.id === courseID);
+
+    if (index !== -1) {
+        courseList.splice(index, 1);
+        console.log(`Course with ID ${courseID} deleted.`);
+        displayCourses();
+        if (courseList.length === 0) {
+            const gpaContainer = document.getElementById("GPA");
+            gpaContainer.innerHTML = '';
+        }
+    }
 }
 
 
