@@ -73,23 +73,31 @@ function displayCourses() {
     const container = document.getElementById('courseContainer');
     container.innerHTML = '';
     courseList.forEach(course => {
-        const courseText = document.createElement('p');
-        courseText.textContent = `Course Name: ${course.code}, Grade: ${course.grade}, Credits: ${course.units}`;
-        courseText.style.display = 'inline-block';
+        const courseCard = document.createElement('div');
+        courseCard.classList.add('course-card');
 
-        const delButton = document.createElement('button');
-        delButton.id = course.id;
-        delButton.innerHTML='X';
-        delButton.style.display = 'inline-block';
-        delButton.addEventListener('click', function() {
+        const courseTitle = document.createElement('h3');
+        courseTitle.textContent = course.code;
+        courseCard.append(courseTitle);
+
+        const gradeInfo = document.createElement('p');
+        gradeInfo.innerHTML = `<span class="grade-label">Grade:</span> <span class="grade-value">${course.grade}</span>`;
+        courseCard.append(gradeInfo);
+
+        const unitsInfo = document.createElement('p');
+        unitsInfo.innerHTML = `<span class="units-label">Units:</span> ${course.units}`;
+        courseCard.append(unitsInfo);
+
+        const deleteButton = document.createElement('button');
+        deleteButton.classList.add('delete-button');
+        deleteButton.innerHTML = 'Delete';
+        deleteButton.addEventListener('click', function() {
             deleteCourse(course.id);
         });
 
-        const wrapper = document.createElement('div');
-        wrapper.appendChild(courseText);
-        wrapper.appendChild(delButton);
+        courseCard.append(deleteButton);
 
-        container.prepend(wrapper);
+        container.prepend(courseCard);
     });
     console.log(courseList);
     displayGPA();
