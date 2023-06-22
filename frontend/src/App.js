@@ -67,10 +67,15 @@ function App() {
     setCourses(prevCourses => prevCourses.filter(course => course.id !== courseID));
   }
 
+  function clearCourses() {
+    setCourses([]);
+  }
+
   return (
     <>
       <FileUpload fileRef={fileRef} handleFileUpload={handleFileUpload} />
       <CourseInput nameRef={nameRef} gradeRef={gradeRef} unitsRef={unitsRef} addCourse={addCourse} />
+      <button onClick={clearCourses}>Clear Courses</button>
       <GpaDisplay courses={courses} />
       <CourseList courses={courses} deleteCourse={deleteCourse}/>
     </>
