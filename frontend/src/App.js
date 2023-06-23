@@ -3,7 +3,9 @@ import CourseList from './CourseList';
 import FileUpload from './FileUpload';
 import CourseInput from './CourseInput';
 import GpaDisplay from './GpaDisplay';
-import './App.css';
+
+import { Button, Box } from '@mui/material';
+import Grid from '@mui/material/Unstable_Grid2';
 
 function App() {
   
@@ -73,11 +75,20 @@ function App() {
 
   return (
     <>
-      <FileUpload fileRef={fileRef} handleFileUpload={handleFileUpload} />
-      <CourseInput nameRef={nameRef} gradeRef={gradeRef} unitsRef={unitsRef} addCourse={addCourse} />
-      <button onClick={clearCourses}>Clear Courses</button>
-      <GpaDisplay courses={courses} />
-      <CourseList courses={courses} deleteCourse={deleteCourse}/>
+      <main>
+        <FileUpload fileRef={fileRef} handleFileUpload={handleFileUpload} />
+        <CourseInput nameRef={nameRef} gradeRef={gradeRef} unitsRef={unitsRef} addCourse={addCourse} />
+        <Box  >
+        <Grid container spacing={2} justifyContent='space-evenly'> 
+          <Grid item >
+            <CourseList courses={courses} deleteCourse={deleteCourse} clearCourses={clearCourses} />
+          </Grid>
+          <Grid item >
+            <GpaDisplay courses={courses} />
+          </Grid>
+        </Grid>
+      </Box>
+      </main>
     </>
   );
 }
