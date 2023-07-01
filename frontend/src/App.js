@@ -4,8 +4,8 @@ import FileUpload from './FileUpload';
 import CourseInput from './CourseInput';
 import GpaDisplay from './GpaDisplay';
 
-import { Button, Box } from '@mui/material';
-import Grid from '@mui/material/Unstable_Grid2';
+import { Button, Box, Typography, Grid, CardContent, Card } from '@mui/material';
+//import Grid from '@mui/material/Unstable_Grid2';
 
 function App() {
   
@@ -33,7 +33,6 @@ function App() {
     })
     .then(response => response.json())
     .then(data => {
-      console.log(data);
       data.forEach(course => {
         course.id = crypto.randomUUID();
       });
@@ -57,7 +56,6 @@ function App() {
         code: name,
         units: units,
         grade: grade,
-        built: true,
         id: crypto.randomUUID()
       };
       setCourses(prevCourses => [course, ...prevCourses]);
@@ -75,19 +73,44 @@ function App() {
 
   return (
     <>
+      <header>
+        <Typography variant='h3' align='center' gutterBottom>MacGrades</Typography>
+        <Typography variant='h6' align='center' gutterBottom>Calculate your McMaster cGPA</Typography>
+      </header>
       <main>
-        <FileUpload fileRef={fileRef} handleFileUpload={handleFileUpload} />
-        <CourseInput nameRef={nameRef} gradeRef={gradeRef} unitsRef={unitsRef} addCourse={addCourse} />
-        <Box  >
-        <Grid container spacing={2} justifyContent='space-evenly'> 
-          <Grid item >
-            <CourseList courses={courses} deleteCourse={deleteCourse} clearCourses={clearCourses} />
+        
+        <Box >
+          <Grid container spacing={2} justifyContent='space-evenly'> 
+            <Grid item >
+              <Card>
+                <CardContent>
+                  <FileUpload fileRef={fileRef} handleFileUpload={handleFileUpload} />
+                </CardContent>
+              </Card>
+            </Grid>
+            <Grid item>
+              <Card>
+                <CardContent>
+                  <CourseInput nameRef={nameRef} gradeRef={gradeRef} unitsRef={unitsRef} addCourse={addCourse} />
+                </CardContent>
+              </Card>
+            </Grid>
+            <Grid item >
+              <Card>
+                <CardContent>
+                  <CourseList courses={courses} deleteCourse={deleteCourse} clearCourses={clearCourses} />
+                </CardContent>
+              </Card>
+            </Grid>
+            <Grid item >
+              <Card>
+                <CardContent>
+                  <GpaDisplay courses={courses} />
+                </CardContent>
+              </Card>
+            </Grid>
           </Grid>
-          <Grid item >
-            <GpaDisplay courses={courses} />
-          </Grid>
-        </Grid>
-      </Box>
+        </Box>
       </main>
     </>
   );
