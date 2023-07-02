@@ -1,5 +1,7 @@
 import React, {useState, useEffect} from 'react'
 
+import { Card, CardContent, Typography } from '@mui/material';
+
 export default function GpaDisplay({ courses }) {
   
     const [standardGPA, setStandardGPA] = useState(0.0);
@@ -41,10 +43,15 @@ export default function GpaDisplay({ courses }) {
     
   
     return (
-    <div>
-        <p>4.0 Scale GPA: {standardGPA.toFixed(2)}</p>
-        <p>McMaster GPA: {macGPA.toFixed(1)}</p>
-    
-    </div>
-  )
+        <Card>
+            <CardContent>
+                <Typography variant='h6' align='center' gutterBottom>
+                    4.0 Scale GPA: {standardGPA.toFixed(2)}
+                </Typography>
+                <Typography variant='h6' align='center' gutterBottom>
+                    McMaster GPA: {macGPA.toFixed(1)}
+                </Typography>
+            </CardContent>
+        </Card>
+    )
 }

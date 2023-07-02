@@ -1,10 +1,10 @@
-import React, { useState, useEffect, useRef } from 'react';
+import React, { useState, useRef } from 'react';
 import CourseList from './CourseList';
 import FileUpload from './FileUpload';
 import CourseInput from './CourseInput';
 import GpaDisplay from './GpaDisplay';
 
-import { Button, Box, Typography, Grid, CardContent, Card } from '@mui/material';
+import { Box, Typography, Grid } from '@mui/material';
 //import Grid from '@mui/material/Unstable_Grid2';
 
 function App() {
@@ -78,36 +78,21 @@ function App() {
         <Typography variant='h6' align='center' gutterBottom>Calculate your McMaster cGPA</Typography>
       </header>
       <main>
-        
         <Box >
-          <Grid container spacing={2} justifyContent='space-evenly'> 
-            <Grid item >
-              <Card>
-                <CardContent>
-                  <FileUpload fileRef={fileRef} handleFileUpload={handleFileUpload} />
-                </CardContent>
-              </Card>
+          <Grid container spacing={2} justifyContent='space-evenly' alignItems='flex-start' > 
+            <Grid container item xs={6} md={6} spacing={2} justifyContent='space-evenly'>
+              <Grid item xs={12} md={12} >
+                <GpaDisplay courses={courses} />
+              </Grid>  
+              <Grid item xs={12} md={6} >
+                <CourseInput nameRef={nameRef} gradeRef={gradeRef} unitsRef={unitsRef} addCourse={addCourse} /> 
+              </Grid>
+              <Grid item xs={12} md={6} >
+                <FileUpload fileRef={fileRef} handleFileUpload={handleFileUpload} />
+              </Grid> 
             </Grid>
-            <Grid item>
-              <Card>
-                <CardContent>
-                  <CourseInput nameRef={nameRef} gradeRef={gradeRef} unitsRef={unitsRef} addCourse={addCourse} />
-                </CardContent>
-              </Card>
-            </Grid>
-            <Grid item >
-              <Card>
-                <CardContent>
-                  <CourseList courses={courses} deleteCourse={deleteCourse} clearCourses={clearCourses} />
-                </CardContent>
-              </Card>
-            </Grid>
-            <Grid item >
-              <Card>
-                <CardContent>
-                  <GpaDisplay courses={courses} />
-                </CardContent>
-              </Card>
+            <Grid item xs={12} md={6} >
+              <CourseList courses={courses} deleteCourse={deleteCourse} clearCourses={clearCourses} />
             </Grid>
           </Grid>
         </Box>
