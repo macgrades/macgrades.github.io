@@ -1,13 +1,52 @@
-import React from 'react'
-import { Button, Card, CardContent, Input } from '@mui/material/';
-
+import React, { useState } from 'react'
+import { Button, Card, CardContent, Grid, Typography } from '@mui/material/';
+import { styled } from '@mui/material/styles';
 
 export default function FileUpload({ fileRef, handleFileUpload }) {
+    
+    const [selectedFileName, setSelectedFileName] = useState('');
+
+    const handleFileChange = (event) => {
+        const file = event.target.files[0];
+        if (!file) {
+            setSelectedFileName('');
+            return;
+        }
+        setSelectedFileName(file.name);
+    };
+
+    const handleSubmitBtn = (event) => {
+        event.preventDefault();
+        handleFileUpload(event);
+        setSelectedFileName('');
+    };
+
     return (
-        <Card>
-            <CardContent>
-                <Input inputRef={fileRef} type="file" id="transcriptFile" name="pdfFile" accept=".pdf" />
-                <Button variant='contained' id="submitBtn" onClick={handleFileUpload}>Submit</Button>
+        <Card sx={{ minHeight: 250 }} >
+            <CardContent >
+                <Grid container wrap='nowrap' justifyContent='flex-end' direction='column' alignItems='center' spacing={7} >
+                    <Grid item xs >
+                        <Button variant='contained' component='label' >
+                            Upload Transcript
+                            <input ref={fileRef} 
+                            type="file" 
+                            id="transcriptFile" 
+                            name="pdfFile" 
+                            accept='.pdf' 
+                            style={{display: 'none'}}
+                            onChange={handleFileChange} />
+                        </Button>
+                    </Grid>
+                    <Grid item xs zeroMinWidth >
+                        <Typography noWrap>
+                            Selected file:
+                            <span style={{ fontWeight: 'bold' }}> {selectedFileName} </span>
+                        </Typography>
+                    </Grid>
+                    <Grid item xs >
+                        <Button variant='contained' id="submitBtn" onClick={handleSubmitBtn}>Submit</Button>
+                    </Grid>
+                </Grid>
             </CardContent>
         </Card>
   )

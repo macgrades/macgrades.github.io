@@ -4,8 +4,26 @@ import FileUpload from './FileUpload';
 import CourseInput from './CourseInput';
 import GpaDisplay from './GpaDisplay';
 
-import { Box, Typography, Grid } from '@mui/material';
-//import Grid from '@mui/material/Unstable_Grid2';
+import { Box, Typography, Grid, CssBaseline } from '@mui/material';
+import { createTheme, ThemeProvider } from '@mui/material/styles';
+
+const theme = createTheme({
+  palette: {
+    primary: {
+      main: '#800020',
+    },
+    secondary: {
+      main: '#ff6f00',
+    },
+    background: {
+      default: '#bfc1c2',
+    },
+  },
+  typography: {
+    fontFamily: ['Montserrat','sans-serif'].join(','),
+    fontWeight: '300',
+  },
+});
 
 function App() {
   
@@ -72,14 +90,16 @@ function App() {
   }
 
   return (
-    <>
+    <ThemeProvider theme={theme} >
+      <CssBaseline />
       <header>
-        <Typography variant='h3' align='center' gutterBottom>MacGrades</Typography>
-        <Typography variant='h6' align='center' gutterBottom>Calculate your McMaster cGPA</Typography>
+        <Typography variant='h3' align='center' gutterBottom sx={{color: '#800020'}} >MacGrades</Typography>
+        <Typography variant='h5' align='center' gutterBottom>Calculate your McMaster cGPA</Typography>
       </header>
       <main>
-        <Box >
-          <Grid container spacing={2} justifyContent='space-evenly' alignItems='flex-start' > 
+        <Box align='center' >
+        <Box sx={{maxWidth: '98%'}} >
+          <Grid container spacing={2} justifyContent='center' alignItems='flex-start' > 
             <Grid container item xs={6} md={6} spacing={2} justifyContent='space-evenly'>
               <Grid item xs={12} md={12} >
                 <GpaDisplay courses={courses} />
@@ -96,8 +116,9 @@ function App() {
             </Grid>
           </Grid>
         </Box>
+        </Box>
       </main>
-    </>
+    </ThemeProvider>
   );
 }
 

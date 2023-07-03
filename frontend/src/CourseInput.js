@@ -3,8 +3,8 @@ import { TextField, MenuItem, Button, Card, CardContent, Grid } from '@mui/mater
 
 export default function CourseInput({ nameRef, gradeRef, unitsRef, addCourse}) {
   return (
-    <Card>
-      <CardContent align='center' >
+    <Card sx={{minHeight: 250, alignItems: 'center'}} >
+      <CardContent >
         <Grid item container spacing={2} justify="center">
           <Grid item xs={12} md={12} >
             <TextField inputRef={nameRef} label="Course Name" variant="standard" type="text" id="courseName" />

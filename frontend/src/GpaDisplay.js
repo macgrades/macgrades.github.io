@@ -1,6 +1,19 @@
 import React, {useState, useEffect} from 'react'
 
 import { Card, CardContent, Typography } from '@mui/material';
+import { styled } from '@mui/material/styles'
+
+const InlineCard = styled(Card)({
+    display: 'flex',
+    minHeight: 205,
+    flexWrap: 'wrap',
+    alignItems: 'center',
+});
+  
+const InlineCardContent = styled(CardContent)({
+    flex: '1 1 auto',
+
+});
 
 export default function GpaDisplay({ courses }) {
   
@@ -43,15 +56,25 @@ export default function GpaDisplay({ courses }) {
     
   
     return (
-        <Card>
-            <CardContent>
-                <Typography variant='h6' align='center' gutterBottom>
-                    4.0 Scale GPA: {standardGPA.toFixed(2)}
+        <>
+        <InlineCard>
+            <InlineCardContent>
+                <Typography variant='h4' gutterBottom >
+                    4.0 Scale GPA
                 </Typography>
-                <Typography variant='h6' align='center' gutterBottom>
-                    McMaster GPA: {macGPA.toFixed(1)}
+                <Typography variant='h4' gutterBottom color='primary' >
+                    {standardGPA.toFixed(2)}
                 </Typography>
-            </CardContent>
-        </Card>
+            </InlineCardContent>
+            <InlineCardContent>
+                <Typography variant='h4' gutterBottom >
+                    McMaster GPA
+                </Typography>
+                <Typography variant='h4' gutterBottom color='primary' >
+                    {macGPA.toFixed(1)}
+                </Typography>
+            </InlineCardContent>
+        </InlineCard>
+        </>
     )
 }
