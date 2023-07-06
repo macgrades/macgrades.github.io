@@ -8,11 +8,13 @@ const InlineCard = styled(Card)({
     minHeight: 205,
     flexWrap: 'wrap',
     alignItems: 'center',
+    justifyContent: 'center',
 });
   
 const InlineCardContent = styled(CardContent)({
     flex: '1 1 auto',
-
+    textAlign: 'center',
+    
 });
 
 export default function GpaDisplay({ courses }) {
@@ -59,10 +61,10 @@ export default function GpaDisplay({ courses }) {
         <>
         <InlineCard>
             <InlineCardContent>
-                <Typography variant='h4' gutterBottom >
+                <Typography variant='h4' gutterBottom  >
                     4.0 Scale GPA
                 </Typography>
-                <Typography variant='h4' gutterBottom color='primary' >
+                <Typography variant='h4' gutterBottom color='primary' fontWeight='bold' >
                     {standardGPA.toFixed(2)}
                 </Typography>
             </InlineCardContent>
@@ -70,7 +72,7 @@ export default function GpaDisplay({ courses }) {
                 <Typography variant='h4' gutterBottom >
                     McMaster GPA
                 </Typography>
-                <Typography variant='h4' gutterBottom color='primary' >
+                <Typography variant='h4' gutterBottom color='primary' fontWeight='bold' >
                     {macGPA.toFixed(1)}
                 </Typography>
             </InlineCardContent>

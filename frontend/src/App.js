@@ -93,13 +93,12 @@ function App() {
     <ThemeProvider theme={theme} >
       <CssBaseline />
       <header>
-        <Typography variant='h3' align='center' gutterBottom sx={{color: '#800020'}} >MacGrades</Typography>
+        <Typography variant='h3' align='center' gutterBottom color='primary' fontWeight='bold' >MacGrades</Typography>
         <Typography variant='h5' align='center' gutterBottom>Calculate your McMaster cGPA</Typography>
       </header>
-      <main>
-        <Box align='center' >
-        <Box sx={{maxWidth: '98%'}} >
-          <Grid container spacing={2} justifyContent='center' alignItems='flex-start' > 
+      <main >
+        <Box sx={{maxWidth: '98%', margin: '0 auto' }} >
+          <Grid container spacing={2} justifyContent='space-around' alignItems='stretch' > 
             <Grid container item xs={6} md={6} spacing={2} justifyContent='space-evenly'>
               <Grid item xs={12} md={12} >
                 <GpaDisplay courses={courses} />
@@ -115,7 +114,6 @@ function App() {
               <CourseList courses={courses} deleteCourse={deleteCourse} clearCourses={clearCourses} />
             </Grid>
           </Grid>
-        </Box>
         </Box>
       </main>
     </ThemeProvider>

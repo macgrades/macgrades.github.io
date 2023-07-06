@@ -1,6 +1,5 @@
 import React, { useState } from 'react'
 import { Button, Card, CardContent, Grid, Typography } from '@mui/material/';
-import { styled } from '@mui/material/styles';
 
 export default function FileUpload({ fileRef, handleFileUpload }) {
     

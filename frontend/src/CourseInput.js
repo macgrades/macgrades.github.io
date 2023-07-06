@@ -3,17 +3,17 @@ import { TextField, MenuItem, Button, Card, CardContent, Grid } from '@mui/mater
 
 export default function CourseInput({ nameRef, gradeRef, unitsRef, addCourse}) {
   return (
-    <Card sx={{minHeight: 250, alignItems: 'center'}} >
-      <CardContent >
-        <Grid item container spacing={2} justify="center">
+    <Card sx={{minHeight: 250}} >
+      <CardContent  sx={{ display: 'flex', justifyContent: 'center' }} >
+        <Grid item container spacing={3} justifyContent='center' alignItems='center' >
           <Grid item xs={12} md={12} >
-            <TextField inputRef={nameRef} label="Course Name" variant="standard" type="text" id="courseName" />
+            <TextField inputRef={nameRef} label="Course Name" variant="standard" type="text" id="courseName" fullWidth />
           </Grid>
           <Grid item xs={12} md={12} >
-            <TextField inputRef={unitsRef} label="Units" variant="standard" type="text" id="units"/>
+            <TextField required inputRef={unitsRef} label="Units" variant="standard" type="text" id="units" fullWidth />
           </Grid>
           <Grid item xs={6} md={6} >
-            <TextField inputRef={gradeRef} label="Grade" variant="standard" type="text" id="grade-select" select defaultValue="A+">
+            <TextField required inputRef={gradeRef} label="Grade" variant="standard" type="text" id="grade-select" select defaultValue="A+" fullWidth>
               <MenuItem value="A+">A+/12</MenuItem>
               <MenuItem value="A">A/11</MenuItem>
               <MenuItem value="A-">A-/10</MenuItem>
