@@ -36,30 +36,35 @@ function App() {
 
   function handleFileUpload(e) {
     e.preventDefault();
+    const reader = new FileReader();
     const file = fileRef.current.files[0];
 
     if (!file) {
       return;
     }
-
-    const formData = new FormData();
-    formData.append('pdfFile', file);
     
-    fetch('/upload', {
-      method: 'POST',
-      body: formData
-    })
-    .then(response => response.json())
-    .then(data => {
-      data.forEach(course => {
-        course.id = crypto.randomUUID();
+    reader.onloadend = function () {
+      const base64string = reader.result.split(',')[1];
+      fetch('https://macgradesweb.azurewebsites.net/upload', {
+        method: 'POST',
+        body: base64string,
+        headers: {
+          'Content-Type': 'text/plain'
+        },
+      })
+      .then(response => response.json())
+      .then(data => {
+        data.forEach(course => {
+          course.id = crypto.randomUUID();
+        });
+        setCourses(prevCourses => [...prevCourses, ...data]);
+      })
+      .catch(error => {
+        console.error('Error:', error);
       });
-      setCourses(prevCourses => [...prevCourses, ...data]);
-    })
-    .catch(error => {
-      console.error('Error:', error);
-    });
-    fileRef.current.value = null;
+      fileRef.current.value = null;
+    }
+    reader.readAsDataURL(file);
   }
 
   function addCourse() {
