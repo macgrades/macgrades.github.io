@@ -45,7 +45,7 @@ function App() {
     
     reader.onloadend = function () {
       const base64string = reader.result.split(',')[1];
-      fetch('https://macgradesweb.azurewebsites.net/upload', {
+      fetch('https://macgradesweb.azurewebsites.net/api/upload', {
         method: 'POST',
         body: base64string,
         headers: {
