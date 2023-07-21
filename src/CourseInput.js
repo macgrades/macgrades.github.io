@@ -3,7 +3,7 @@ import { TextField, MenuItem, Button, Card, CardContent, Grid } from '@mui/mater
 
 export default function CourseInput({ nameRef, gradeRef, unitsRef, addCourse}) {
   return (
-    <Card sx={{minHeight: 250}} >
+    <Card sx={{minHeight: 250, }} >
       <CardContent  sx={{ display: 'flex', justifyContent: 'center' }} >
         <Grid item container spacing={3} justifyContent='center' alignItems='center' >
           <Grid item xs={12} md={12} >

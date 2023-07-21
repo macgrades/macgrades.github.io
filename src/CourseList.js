@@ -6,10 +6,23 @@ import DeleteIcon from '@mui/icons-material/Delete';
 
 export default function CourseList({ courses, deleteCourse, clearCourses }) {
   return (
-    <Card>
+    <Card sx={{ 
+      
+      
+      //minWidth: 400,
+      
+      }} >
       <CardContent>
-        <Paper sx={{ overflow: 'hidden', minWidth: 400}} >
-          <TableContainer sx={{ maxHeight: 430 }} >
+        <Paper sx={{
+          height: '80vh',
+          display: 'flex',
+          flexDirection: 'column',
+          overflow: 'hidden',
+          }} >
+          <TableContainer sx={{ 
+            flex: '1 1 auto',
+            maxHeight: '100%',
+            }} >
             <Table stickyHeader size="small" aria-label="simple table">
               <TableHead>
                 <TableRow>

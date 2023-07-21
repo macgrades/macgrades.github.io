@@ -21,12 +21,12 @@ export default function FileUpload({ fileRef, handleFileUpload }) {
     };
 
     return (
-        <Card sx={{ minHeight: 250 }} >
+        <Card sx={{ minHeight: 250,  }} >
             <CardContent >
                 <Grid container wrap='nowrap' justifyContent='flex-end' direction='column' alignItems='center' spacing={7} >
                     <Grid item xs >
                         <Button variant='contained' component='label' >
-                            Upload Transcript
+                            Select File
                             <input ref={fileRef} 
                             type="file" 
                             id="transcriptFile" 

@@ -94,6 +94,15 @@ function App() {
     setCourses([]);
   }
 
+  const gridStyling = {
+    container: {
+      paddingRight: 2,
+      paddingBottom: 2,
+      paddingLeft: 2,
+      paddingTop: 2,
+    }
+  }
+
   return (
     <ThemeProvider theme={theme} >
       <CssBaseline />
@@ -102,9 +111,8 @@ function App() {
         <Typography variant='h5' align='center' gutterBottom>Calculate your McMaster cGPA</Typography>
       </header>
       <main >
-        <Box sx={{maxWidth: '98%', margin: '0 auto' }} >
-          <Grid container spacing={2} justifyContent='space-around' alignItems='stretch' > 
-            <Grid container item xs={6} md={6} spacing={2} justifyContent='space-evenly'>
+          <Grid container spacing={2} sx={gridStyling.container} > 
+            <Grid container item xs={12} md={6} >
               <Grid item xs={12} md={12} >
                 <GpaDisplay courses={courses} />
               </Grid>  
@@ -119,7 +127,6 @@ function App() {
               <CourseList courses={courses} deleteCourse={deleteCourse} clearCourses={clearCourses} />
             </Grid>
           </Grid>
-        </Box>
       </main>
     </ThemeProvider>
   );
