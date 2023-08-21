@@ -1,9 +1,36 @@
-import React from 'react'
+import React, { useContext, useRef } from 'react'
 import { TextField, MenuItem, Button, Card, CardContent, Grid } from '@mui/material'
+import { CourseListContext } from '../../Contexts/CourseListContext'
 
-export default function CourseInput({ nameRef, gradeRef, unitsRef, addCourse}) {
+export default function CourseInput() {
+
+  const [courses, setCourses] = useContext(CourseListContext);
+  const nameRef = useRef();
+  const gradeRef = useRef();
+  const unitsRef = useRef();
+
+
+  const addCourse = () => {
+    let name = nameRef.current.value;
+    const grade = gradeRef.current.value;
+    const units = unitsRef.current.value;
+    if (grade && units && !isNaN(units)) {
+      if (!name) {
+        name = `Course ${courses.length+1}`;
+      }
+      const course = {
+        code: name,
+        units: units,
+        grade: grade,
+        id: crypto.randomUUID()
+      };
+      setCourses(prevCourses => [course, ...prevCourses]);
+      nameRef.current.value = '';
+    }
+  }
+
   return (
-    <Card sx={{minHeight: 250, }} >
+    <Card sx={{minHeight: '100%', width: '50%' }} >
       <CardContent  sx={{ display: 'flex', justifyContent: 'center' }} >
         <Grid item container spacing={3} justifyContent='center' alignItems='center' >
           <Grid item xs={12} md={12} >

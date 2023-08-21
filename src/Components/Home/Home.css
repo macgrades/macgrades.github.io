@@ -1,0 +1,47 @@
+.home-content{
+    display: flex;
+    justify-content: space-evenly;
+    padding : 10px;
+    height: 85vh;
+}
+
+.left {
+    width: 50%;
+    padding : 10px;
+    display: flex;
+    flex-direction: column; 
+    justify-content: space-between; 
+    align-items: flex-start; 
+}
+
+.left-bottom {
+    display: flex;
+    height: 50%;
+    flex-direction: row;
+    justify-content: space-between;
+    padding-top: 20px; 
+    width: 100%;
+}
+
+.left-top {
+    height: 50%;
+    width: 100%;
+}
+
+.right {
+    padding: 10px;
+    width: 50%;
+}
+
+@media screen and (max-width: 800px) {
+    .home-content {
+        flex-direction: column; /* Stack elements vertically */
+        align-items: center; /* Center elements horizontally */
+        height: auto; /* Remove fixed height */
+    }
+
+    .left, .right {
+        width: 100%; /* Make both columns take full width */
+    }
+
+}

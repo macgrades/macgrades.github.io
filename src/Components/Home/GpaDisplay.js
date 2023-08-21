@@ -1,14 +1,17 @@
-import React, {useState, useEffect} from 'react'
+import React, {useState, useEffect, useContext } from 'react'
 
 import { Card, CardContent, Typography } from '@mui/material';
 import { styled } from '@mui/material/styles'
 
+import { CourseListContext } from '../../Contexts/CourseListContext'
+
 const InlineCard = styled(Card)({
     display: 'flex',
-    minHeight: 205,
     flexWrap: 'wrap',
     alignItems: 'center',
     justifyContent: 'center',
+    height: '100%',
+    width: '100%',
 });
   
 const InlineCardContent = styled(CardContent)({
@@ -17,8 +20,9 @@ const InlineCardContent = styled(CardContent)({
     
 });
 
-export default function GpaDisplay({ courses }) {
+export default function GpaDisplay() {
   
+    const [courses,] = useContext(CourseListContext);
     const [standardGPA, setStandardGPA] = useState(0.0);
     const [macGPA, setMacGPA] = useState(0.0);
 
