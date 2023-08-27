@@ -3,6 +3,7 @@
     justify-content: space-evenly;
     padding : 10px;
     height: 85vh;
+    min-height: 450px;
 }
 
 .left {
@@ -35,13 +36,13 @@
 
 @media screen and (max-width: 800px) {
     .home-content {
-        flex-direction: column; /* Stack elements vertically */
-        align-items: center; /* Center elements horizontally */
-        height: auto; /* Remove fixed height */
+        flex-direction: column;
+        align-items: center; 
+        height: auto; 
     }
 
     .left, .right {
-        width: 100%; /* Make both columns take full width */
+        width: 100%;
     }
 
 }

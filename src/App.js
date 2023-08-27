@@ -4,6 +4,7 @@ import Header from './Components/Header/Header';
 
 import { CssBaseline } from '@mui/material';
 import { createTheme, ThemeProvider } from '@mui/material/styles';
+import { ViewportProvider } from './Contexts/ViewportContext';
 
 
 const theme = createTheme({
@@ -29,11 +30,13 @@ const theme = createTheme({
 function App() {
 
   return (
+    <ViewportProvider>
     <ThemeProvider theme={theme} >
       <CssBaseline />
       <Header />
       <Home />
     </ThemeProvider>
+    </ViewportProvider>
   );
 }
 

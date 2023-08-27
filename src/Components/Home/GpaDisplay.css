@@ -1,0 +1,15 @@
+.gpa {
+    font-size:xx-large ;
+}
+
+.gpa-num {
+    font-weight: bold;
+    color: #800020;
+}
+
+@media screen and (max-width: 1150px) and (min-width: 801px) {
+    .gpa {
+        font-size: x-large;
+    }
+
+}
