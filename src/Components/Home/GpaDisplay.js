@@ -18,7 +18,6 @@ const InlineCard = styled(Card)({
 const InlineCardContent = styled(CardContent)({
     flex: '1 1 auto',
     textAlign: 'center',
-
 });
 
 export default function GpaDisplay() {
@@ -80,7 +79,7 @@ export default function GpaDisplay() {
                         </div>
                     
                 </InlineCardContent>
-                <InlineCardContent sx={{paddingBottom: '16px'}}>
+                <InlineCardContent>
                     
                         <div className='gpa'>
                             McMaster GPA
@@ -91,6 +90,7 @@ export default function GpaDisplay() {
                         </div>
                     
                 </InlineCardContent>
+                <span/>
             </InlineCard>
         </>
     )

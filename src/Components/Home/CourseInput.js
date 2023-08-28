@@ -1,5 +1,5 @@
 import React, { useContext, useRef } from 'react'
-import { TextField, MenuItem, Button, Card, CardContent, Grid } from '@mui/material'
+import { TextField, MenuItem, Button, Card, CardContent } from '@mui/material'
 import { CourseListContext } from '../../Contexts/CourseListContext'
 
 export default function CourseInput() {

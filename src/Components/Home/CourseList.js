@@ -24,9 +24,12 @@ export default function CourseList() {
       height: '100%',
       maxHeight: '100%',
     }} >
-      <CardContent  >
+      <CardContent sx={{
+      height: '100%',
+      maxHeight: '100%',
+    }}  >
         <Paper sx={{
-          maxHeight:'75vh',
+          maxHeight:'100%',
           display: 'flex',
           flexDirection: 'column',
           overflow: 'hidden',
@@ -66,6 +69,7 @@ export default function CourseList() {
           </TableContainer>
         </Paper>
       </CardContent>
+      <span/>
     </Card>
 
   );
