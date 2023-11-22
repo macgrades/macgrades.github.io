@@ -1,0 +1,18 @@
+.link{
+    color: gray;
+    font-style: underline;
+    text-decoration: none;
+    font-size: 1rem;
+    transition: all 0.3s ease-in-out;
+    text-decoration-line: underline;
+    &:hover{
+        color: #800020;
+    }
+}
+
+.footer {
+    text-align: center;
+    color: #fff;
+    font-size: 0.5rem;
+    
+}
