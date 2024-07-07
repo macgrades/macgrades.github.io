@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useEffect } from 'react';
 import Home from './Components/Home/Home';
 import Header from './Components/Header/Header';
 import Footer from './Components/Footer/Footer';
@@ -29,7 +29,10 @@ const theme = createTheme({
 });
 
 function App() {
-
+  useEffect(() => {
+    fetch('https://macgradesweb.azurewebsites.net/api/visit');
+    console.log('Visited');
+  }, []);
   return (
     <ViewportProvider>
     <ThemeProvider theme={theme} >

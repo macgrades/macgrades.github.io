@@ -8,18 +8,33 @@ export default function FileUpload() {
   const fileRef = useRef();
   const [selectedFileName, setSelectedFileName] = useState('');
   const [loading, setLoading] = useState(false);
-  const [error, setError] = useState(false);
+  const [errorMessage, setErrorMessage] = useState('');
+
+  if (errorMessage) {
+    fileRef.current.value = null;
+  }
 
   const handleFileUpload = (e) => {
     e.preventDefault();
       
     const reader = new FileReader();
     const file = fileRef.current.files[0];
-    setError(false);
+    setErrorMessage('');
 
     if (!file) {
       return;
     }
+
+    if (file.type !== 'application/pdf') {
+      setErrorMessage('Error: File is not a PDF');
+      return;
+    }
+    const MAX_FILE_SIZE = 1024 ** 2; // 1MB
+    if (file.size > MAX_FILE_SIZE) {
+      setErrorMessage('Error: File is too large');
+      return;
+    }
+
     setLoading(true);
     reader.onloadend = function () {
       const base64string = reader.result.split(',')[1];
@@ -32,6 +47,15 @@ export default function FileUpload() {
       })
         .then(response => response.json())
         .then(data => {
+          if (data.length === 0) {
+            setErrorMessage('Unknown Error');
+            setLoading(false);
+            fetch('https://macgradesweb.azurewebsites.net/api/log-error', {
+              method: 'GET',
+            });
+            console.log("Error: No courses found in transcript");
+            return;
+          }
           data.forEach(course => {
             course.id = crypto.randomUUID();
           });
@@ -40,7 +64,7 @@ export default function FileUpload() {
         })
         .catch(error => {
           console.log(error);
-          setError(true);
+          setErrorMessage('Unknown Error');
           setLoading(false);
         });
       fileRef.current.value = null;
@@ -61,7 +85,7 @@ export default function FileUpload() {
       setSelectedFileName('');
       return;
     }
-    setError(false);
+    setErrorMessage('');
     setSelectedFileName(trimFileName(file.name));
   };
 
@@ -86,7 +110,7 @@ export default function FileUpload() {
           </Button>
           <Typography noWrap>
             Selected file:
-            <span style={{ fontWeight: 'bold' }}> {error ? <span style={{color: 'red'}}>Error</span> : selectedFileName} </span>
+            <span style={{ fontWeight: 'bold' }}> {errorMessage ? <span style={{color: 'red'}}>{errorMessage}</span> : selectedFileName} </span>
           </Typography>
           <Button variant='contained' id="submitBtn" onClick={handleSubmitBtn}>{loading ? <>Loading...</> : <>Submit</>}</Button>
       </CardContent>
