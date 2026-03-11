@@ -27,8 +27,10 @@
 
 .delete-button {
   color: var(--primary-color);
-  width: 2em;
+  min-width: 26px;
+  width: 26px;
   transition: filter 0.3s ease;
+  margin-right: 2em;
 }
 
 .delete-button:hover {
