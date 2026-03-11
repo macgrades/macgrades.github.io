@@ -1,23 +1,23 @@
-import React, { useEffect } from 'react';
-import Home from './Components/Home/Home';
-import Header from './Components/Header/Header';
-import Footer from './Components/Footer/Footer';
+import React, { useEffect } from "react";
+import Home from "./Components/Home/Home";
+import Header from "./Components/Header/Header";
+import Footer from "./Components/Footer/Footer";
 
-import { CssBaseline } from '@mui/material';
-import { createTheme, ThemeProvider } from '@mui/material/styles';
-import { ViewportProvider } from './Contexts/ViewportContext';
-
+import { CssBaseline } from "@mui/material";
+import { createTheme, ThemeProvider } from "@mui/material/styles";
+import { ViewportProvider } from "./Contexts/ViewportContext";
+import "./App.css";
 
 const theme = createTheme({
   palette: {
     primary: {
-      main: '#800020',
+      main: "#800020",
     },
     secondary: {
-      main: '#ff6f00',
+      main: "#ff6f00",
     },
     background: {
-      default: '#bfc1c2',
+      default: "#bfc1c2",
     },
   },
   typography: {
@@ -30,17 +30,19 @@ const theme = createTheme({
 
 function App() {
   useEffect(() => {
-    fetch('https://macgradesweb.azurewebsites.net/api/visit');
-    console.log('Visited');
+    if (process.env.NODE_ENV === "production") {
+      fetch("https://macgradesweb.azurewebsites.net/api/visit");
+    }
+    console.log("Visited");
   }, []);
   return (
     <ViewportProvider>
-    <ThemeProvider theme={theme} >
-      <CssBaseline />
-      <Header />
-      <Home />
-      <Footer />
-    </ThemeProvider>
+      <ThemeProvider theme={theme}>
+        <CssBaseline />
+        <Header />
+        <Home />
+        <Footer />
+      </ThemeProvider>
     </ViewportProvider>
   );
 }
