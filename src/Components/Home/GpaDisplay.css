@@ -1,15 +1,12 @@
-.gpa {
-    font-size:xx-large ;
+.gpa-title {
+  font-size: 1.5em;
+  text-align: center;
+  top: 10px;
 }
 
 .gpa-num {
-    font-weight: bold;
-    color: #800020;
-}
-
-@media screen and (max-width: 1150px) and (min-width: 801px) {
-    .gpa {
-        font-size: x-large;
-    }
-
+  text-align: center;
+  font-weight: bold;
+  font-size: 3em;
+  color: var(--primary-color);
 }

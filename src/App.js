@@ -10,13 +10,13 @@ import "./App.css";
 const theme = createTheme({
   palette: {
     primary: {
-      main: "#800020",
+      main: "--primary-color",
     },
     secondary: {
-      main: "#ff6f00",
+      main: "--secondary-color",
     },
     background: {
-      default: "#bfc1c2",
+      default: "--background-color",
     },
   },
   typography: {
