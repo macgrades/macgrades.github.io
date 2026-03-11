@@ -1,7 +1,15 @@
 :root {
   --primary-color: #800020;
   --secondary-color: #f0f1ec;
-  --background-color: #f0f0f0;
+  --background-color: #dad9d5;
   --text-color: #484848;
   padding: 1.5em;
+}
+
+body {
+  background-color: var(--background-color);
+  color: var(--text-color);
+  font-family: "Arial", sans-serif;
+  margin: 0;
+  padding: 0;
 }
