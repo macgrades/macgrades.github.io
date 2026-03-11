@@ -1,7 +1,6 @@
 import React, { useEffect } from "react";
 import Home from "./Components/Home/Home";
 import Header from "./Components/Header/Header";
-import Footer from "./Components/Footer/Footer";
 
 import { CssBaseline } from "@mui/material";
 import { createTheme, ThemeProvider } from "@mui/material/styles";
@@ -41,7 +40,6 @@ function App() {
         <CssBaseline />
         <Header />
         <Home />
-        <Footer />
       </ThemeProvider>
     </ViewportProvider>
   );
