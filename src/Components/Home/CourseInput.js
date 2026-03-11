@@ -1,19 +1,21 @@
-import { useContext, useRef } from "react";
+import { useContext, useRef, useState } from "react";
 import { CourseListContext } from "../../Contexts/CourseListContext";
 import Card from "./Card";
 import "./CourseInput.css";
 
 export default function CourseInput() {
   const [courses, setCourses] = useContext(CourseListContext);
+  const [error, setError] = useState("");
   const nameRef = useRef();
   const gradeRef = useRef();
   const unitsRef = useRef();
 
   const addCourse = () => {
+    setError("");
     let name = nameRef.current.value;
     const grade = gradeRef.current.value;
     const units = unitsRef.current.value;
-    if (grade && units && !isNaN(units)) {
+    if (grade && units && !isNaN(units) && Number(units) > 0) {
       if (!name) {
         name = `Course ${courses.length + 1}`;
       }
@@ -25,6 +27,8 @@ export default function CourseInput() {
       };
       setCourses((prevCourses) => [course, ...prevCourses]);
       nameRef.current.value = "";
+    } else {
+      setError("Please enter a valid grade and number of units.");
     }
   };
 
@@ -40,6 +44,7 @@ export default function CourseInput() {
         <div className="field">
           <label htmlFor="grade" className="label">
             Grade
+            <span aria-hidden="true">*</span>
           </label>
           <select ref={gradeRef} id="grade">
             <option value="A+">A+ / 12</option>
@@ -58,10 +63,14 @@ export default function CourseInput() {
           </select>
         </div>
         <div className="field">
-          <label htmlFor="units">Units</label>
+          <label htmlFor="units">
+            Units
+            <span aria-hidden="true">*</span>
+          </label>
           <input ref={unitsRef} type="text" id="units" />
         </div>
       </div>
+      {error && <p className="error">{error}</p>}
       <button className="primary" onClick={addCourse}>
         Add Course
       </button>

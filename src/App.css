@@ -111,3 +111,8 @@ button.secondary:hover {
   background-color: var(--primary-color);
   color: white;
 }
+
+.error {
+  color: var(--primary-color);
+  font-size: 0.9em;
+}
