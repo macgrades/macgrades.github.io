@@ -62,77 +62,9 @@ export default function CourseInput() {
           <input ref={unitsRef} type="text" id="units" />
         </div>
       </div>
-      <button onClick={addCourse}>Add Course</button>
+      <button className="primary" onClick={addCourse}>
+        Add Course
+      </button>
     </Card>
-    // <Card sx={{ minHeight: "100%", width: "50%" }}>
-    //   <CardContent
-    //     sx={{
-    //       display: "flex",
-    //       justifyContent: "space-around",
-    //       alignItems: "center",
-    //       flexDirection: "column",
-    //       minHeight: "100%",
-    //     }}
-    //   >
-    //     <TextField
-    //       inputRef={nameRef}
-    //       label="Course Name"
-    //       variant="standard"
-    //       type="text"
-    //       id="courseName"
-    //       fullWidth
-    //     />
-    //     <div
-    //       style={{
-    //         display: "flex",
-    //         alignItems: "flex-start",
-    //         flexDirection: "row",
-    //         minHeight: "100%",
-    //         minWidth: "100%",
-    //         marginTop: "5px",
-    //         marginBottom: "5px",
-    //       }}
-    //     >
-    //       <TextField
-    //         required
-    //         inputRef={unitsRef}
-    //         label="Units"
-    //         variant="standard"
-    //         type="text"
-    //         id="units"
-    //         fullWidth
-    //         sx={{ paddingRight: "5px" }}
-    //       />
-    //       <TextField
-    //         required
-    //         inputRef={gradeRef}
-    //         label="Grade"
-    //         variant="standard"
-    //         type="text"
-    //         id="grade-select"
-    //         select
-    //         defaultValue="A+"
-    //         fullWidth
-    //       >
-    //         <MenuItem value="A+">A+/12</MenuItem>
-    //         <MenuItem value="A">A/11</MenuItem>
-    //         <MenuItem value="A-">A-/10</MenuItem>
-    //         <MenuItem value="B+">B+/9</MenuItem>
-    //         <MenuItem value="B">B/8</MenuItem>
-    //         <MenuItem value="B-">B-/7</MenuItem>
-    //         <MenuItem value="C+">C+/6</MenuItem>
-    //         <MenuItem value="C">C/5</MenuItem>
-    //         <MenuItem value="C-">C-/4</MenuItem>
-    //         <MenuItem value="D+">D+/3</MenuItem>
-    //         <MenuItem value="D">D/2</MenuItem>
-    //         <MenuItem value="D-">D-/1</MenuItem>
-    //         <MenuItem value="F">F/0</MenuItem>
-    //       </TextField>
-    //     </div>
-    //     <Button variant="contained" id="addCourseBtn" onClick={addCourse}>
-    //       Add Course
-    //     </Button>
-    //   </CardContent>
-    // </Card>
   );
 }

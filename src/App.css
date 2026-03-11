@@ -4,7 +4,7 @@
   --background-color: #dad9d5;
   --text-color: #333333;
   --secondary-text-color: #484848;
-  --primary-hover-color: #660018;
+  --primary-hover-color: #4d0014;
   padding: 1.5em;
 }
 
@@ -22,6 +22,21 @@ body {
   padding: 0;
 }
 
+h1,
+h2,
+h3,
+h4,
+h5,
+h6,
+p {
+  margin: 0;
+  line-height: 1;
+}
+
+label {
+  pointer-events: none;
+}
+
 input,
 select {
   width: 100%;
@@ -30,16 +45,25 @@ select {
   height: 2.5rem;
   padding: 0 1rem;
   background-color: var(--secondary-color);
+  transition: border-color 0.1s ease;
+  outline: none;
 }
 
-input:focus {
-  outline: 2px solid var(--primary-color);
-  /* outline-offset: 2px; /* Optional: adds space between input and outline */
+input:hover,
+select:hover {
+  border-color: var(--primary-color);
+}
+
+input:focus,
+select:focus {
+  border: 2px solid #ccc;
+  border-color: var(--primary-color);
+  transition: none;
 }
 
 select {
-  appearance: none; /* Removes default arrow */
-  padding: 10px 40px 10px 12px; /* Extra padding on right for custom arrow */
+  appearance: none;
+  padding: 10px 40px 10px 12px;
   cursor: pointer;
   font-family: inherit;
   font-size: 1rem;
@@ -51,6 +75,12 @@ select {
 }
 
 button {
+  background-color: transparent;
+  border: none;
+  cursor: pointer;
+}
+
+button.primary {
   background-color: var(--primary-color);
   color: white;
   border: none;
@@ -58,9 +88,26 @@ button {
   padding: 0.5rem 1.5rem;
   cursor: pointer;
   transition: background-color 0.3s ease;
-  width: 100%;
 }
 
-button:hover {
+button.secondary {
+  background-color: var(--secondary-color);
+  color: var(--primary-color);
+  border: 2px solid var(--primary-color);
+  padding: 0.5em 1em;
+  cursor: pointer;
+  border-radius: 8px;
+  font-weight: bold;
+  transition:
+    background-color 0.3s ease,
+    color 0.3s ease;
+}
+
+button.primary:hover {
   background-color: var(--primary-hover-color);
+}
+
+button.secondary:hover {
+  background-color: var(--primary-color);
+  color: white;
 }
