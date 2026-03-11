@@ -1,14 +1,13 @@
-import React, { useContext, useRef } from 'react'
-import { TextField, MenuItem, Button, Card, CardContent } from '@mui/material'
-import { CourseListContext } from '../../Contexts/CourseListContext'
+import { useContext, useRef } from "react";
+import { CourseListContext } from "../../Contexts/CourseListContext";
+import Card from "./Card";
+import "./CourseInput.css";
 
 export default function CourseInput() {
-
   const [courses, setCourses] = useContext(CourseListContext);
   const nameRef = useRef();
   const gradeRef = useRef();
   const unitsRef = useRef();
-
 
   const addCourse = () => {
     let name = nameRef.current.value;
@@ -22,38 +21,118 @@ export default function CourseInput() {
         code: name,
         units: units,
         grade: grade,
-        id: crypto.randomUUID()
+        id: crypto.randomUUID(),
       };
-      setCourses(prevCourses => [course, ...prevCourses]);
-      nameRef.current.value = '';
+      setCourses((prevCourses) => [course, ...prevCourses]);
+      nameRef.current.value = "";
     }
-  }
+  };
 
   return (
-    <Card sx={{ minHeight: '100%', width: '50%' }} >
-      <CardContent sx={{ display: 'flex', justifyContent: 'space-around', alignItems: 'center', flexDirection: 'column', minHeight: '100%' }} >
-        <TextField inputRef={nameRef} label="Course Name" variant="standard" type="text" id="courseName" fullWidth />
-        <div style={{display: 'flex', alignItems: 'flex-start', flexDirection: 'row', minHeight: '100%', minWidth:'100%', marginTop: '5px', marginBottom: '5px'}}>
-          <TextField required inputRef={unitsRef} label="Units" variant="standard" type="text" id="units" fullWidth sx={{paddingRight: '5px'}} />
-          <TextField required inputRef={gradeRef} label="Grade" variant="standard" type="text" id="grade-select" select defaultValue="A+" fullWidth>
-          <MenuItem value="A+">A+/12</MenuItem>
-          <MenuItem value="A">A/11</MenuItem>
-          <MenuItem value="A-">A-/10</MenuItem>
-          <MenuItem value="B+">B+/9</MenuItem>
-          <MenuItem value="B">B/8</MenuItem>
-          <MenuItem value="B-">B-/7</MenuItem>
-          <MenuItem value="C+">C+/6</MenuItem>
-          <MenuItem value="C">C/5</MenuItem>
-          <MenuItem value="C-">C-/4</MenuItem>
-          <MenuItem value="D+">D+/3</MenuItem>
-          <MenuItem value="D">D/2</MenuItem>
-          <MenuItem value="D-">D-/1</MenuItem>
-          <MenuItem value="F">F/0</MenuItem>
-        </TextField>
+    <Card id="course-input-card">
+      <div className="field">
+        <label htmlFor="courseName" className="label">
+          Course Name
+        </label>
+        <input ref={nameRef} type="text" id="courseName" />
+      </div>
+      <div className="row">
+        <div className="field">
+          <label htmlFor="grade" className="label">
+            Grade
+          </label>
+          <select ref={gradeRef} id="grade">
+            <option value="A+">A+ / 12</option>
+            <option value="A">A / 11</option>
+            <option value="A-">A- / 10</option>
+            <option value="B+">B+ / 9</option>
+            <option value="B">B / 8</option>
+            <option value="B-">B- / 7</option>
+            <option value="C+">C+ / 6</option>
+            <option value="C">C / 5</option>
+            <option value="C-">C- / 4</option>
+            <option value="D+">D+ / 3</option>
+            <option value="D">D / 2</option>
+            <option value="D-">D- / 1</option>
+            <option value="F">F / 0</option>
+          </select>
         </div>
-        <Button variant='contained' id="addCourseBtn" onClick={addCourse}>Add Course</Button>
-      </CardContent>
+        <div className="field">
+          <label htmlFor="units">Units</label>
+          <input ref={unitsRef} type="text" id="units" />
+        </div>
+      </div>
+      <button onClick={addCourse}>Add Course</button>
     </Card>
-
-  )
+    // <Card sx={{ minHeight: "100%", width: "50%" }}>
+    //   <CardContent
+    //     sx={{
+    //       display: "flex",
+    //       justifyContent: "space-around",
+    //       alignItems: "center",
+    //       flexDirection: "column",
+    //       minHeight: "100%",
+    //     }}
+    //   >
+    //     <TextField
+    //       inputRef={nameRef}
+    //       label="Course Name"
+    //       variant="standard"
+    //       type="text"
+    //       id="courseName"
+    //       fullWidth
+    //     />
+    //     <div
+    //       style={{
+    //         display: "flex",
+    //         alignItems: "flex-start",
+    //         flexDirection: "row",
+    //         minHeight: "100%",
+    //         minWidth: "100%",
+    //         marginTop: "5px",
+    //         marginBottom: "5px",
+    //       }}
+    //     >
+    //       <TextField
+    //         required
+    //         inputRef={unitsRef}
+    //         label="Units"
+    //         variant="standard"
+    //         type="text"
+    //         id="units"
+    //         fullWidth
+    //         sx={{ paddingRight: "5px" }}
+    //       />
+    //       <TextField
+    //         required
+    //         inputRef={gradeRef}
+    //         label="Grade"
+    //         variant="standard"
+    //         type="text"
+    //         id="grade-select"
+    //         select
+    //         defaultValue="A+"
+    //         fullWidth
+    //       >
+    //         <MenuItem value="A+">A+/12</MenuItem>
+    //         <MenuItem value="A">A/11</MenuItem>
+    //         <MenuItem value="A-">A-/10</MenuItem>
+    //         <MenuItem value="B+">B+/9</MenuItem>
+    //         <MenuItem value="B">B/8</MenuItem>
+    //         <MenuItem value="B-">B-/7</MenuItem>
+    //         <MenuItem value="C+">C+/6</MenuItem>
+    //         <MenuItem value="C">C/5</MenuItem>
+    //         <MenuItem value="C-">C-/4</MenuItem>
+    //         <MenuItem value="D+">D+/3</MenuItem>
+    //         <MenuItem value="D">D/2</MenuItem>
+    //         <MenuItem value="D-">D-/1</MenuItem>
+    //         <MenuItem value="F">F/0</MenuItem>
+    //       </TextField>
+    //     </div>
+    //     <Button variant="contained" id="addCourseBtn" onClick={addCourse}>
+    //       Add Course
+    //     </Button>
+    //   </CardContent>
+    // </Card>
+  );
 }

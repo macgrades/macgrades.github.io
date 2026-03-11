@@ -1,0 +1,22 @@
+#course-input-card {
+  gap: 1rem;
+}
+
+#course-input-card .row {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  width: 100%;
+  gap: 1rem;
+}
+
+#course-input-card select {
+  padding: 0 1rem;
+}
+
+#course-input-card .field {
+  display: flex;
+  flex-direction: column;
+  gap: 0.5rem;
+  width: 100%;
+}

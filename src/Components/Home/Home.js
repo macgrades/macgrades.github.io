@@ -20,7 +20,7 @@ const Home = () => {
             </div>
             <div className="left-bottom">
               <CourseInput />
-              <FileUpload />
+              {/* <FileUpload /> */}
             </div>
           </div>
           <div className="right">
@@ -33,4 +33,3 @@ const Home = () => {
 };
 
 export default Home;
-

@@ -2,8 +2,16 @@
   --primary-color: #800020;
   --secondary-color: #f0f1ec;
   --background-color: #dad9d5;
-  --text-color: #484848;
+  --text-color: #333333;
+  --secondary-text-color: #484848;
+  --primary-hover-color: #660018;
   padding: 1.5em;
+}
+
+*,
+*::before,
+*::after {
+  box-sizing: border-box;
 }
 
 body {
@@ -12,4 +20,47 @@ body {
   font-family: "Arial", sans-serif;
   margin: 0;
   padding: 0;
+}
+
+input,
+select {
+  width: 100%;
+  border: 1px solid #ccc;
+  border-radius: 1.5rem;
+  height: 2.5rem;
+  padding: 0 1rem;
+  background-color: var(--secondary-color);
+}
+
+input:focus {
+  outline: 2px solid var(--primary-color);
+  /* outline-offset: 2px; /* Optional: adds space between input and outline */
+}
+
+select {
+  appearance: none; /* Removes default arrow */
+  padding: 10px 40px 10px 12px; /* Extra padding on right for custom arrow */
+  cursor: pointer;
+  font-family: inherit;
+  font-size: 1rem;
+  color: #333;
+  background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='24' height='24' viewBox='0 0 24 24' fill='none' stroke='%23333333' stroke-width='2' stroke-linecap='round' stroke-linejoin='round'%3E%3Cpolyline points='6 9 12 15 18 9'%3E%3C/polyline%3E%3C/svg%3E");
+  background-repeat: no-repeat;
+  background-position: right 12px center;
+  background-size: 16px;
+}
+
+button {
+  background-color: var(--primary-color);
+  color: white;
+  border: none;
+  border-radius: 0.5rem;
+  padding: 0.5rem 1.5rem;
+  cursor: pointer;
+  transition: background-color 0.3s ease;
+  width: 100%;
+}
+
+button:hover {
+  background-color: var(--primary-hover-color);
 }
