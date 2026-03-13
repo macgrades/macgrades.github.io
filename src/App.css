@@ -1,3 +1,5 @@
+@import url("https://rsms.me/inter/inter.css");
+
 :root {
   --primary-color: #800020;
   --secondary-color: #f0f1ec;
@@ -5,6 +7,8 @@
   --text-color: #333333;
   --secondary-text-color: #484848;
   --primary-hover-color: #4d0014;
+
+  font-family: "Inter", sans-serif;
   padding: 1.5em;
 }
 
@@ -17,7 +21,6 @@
 body {
   background-color: var(--background-color);
   color: var(--text-color);
-  font-family: "Arial", sans-serif;
   margin: 0;
   padding: 0;
 }
