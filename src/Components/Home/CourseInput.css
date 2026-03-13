@@ -24,3 +24,7 @@
 #course-input-card button {
   width: 100%;
 }
+
+#course-input-card form {
+  display: contents;
+}

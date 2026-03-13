@@ -10,7 +10,8 @@ export default function CourseInput() {
   const gradeRef = useRef();
   const unitsRef = useRef();
 
-  const addCourse = () => {
+  const addCourse = (e) => {
+    e.preventDefault();
     setError("");
     let name = nameRef.current.value;
     const grade = gradeRef.current.value;
@@ -34,46 +35,48 @@ export default function CourseInput() {
 
   return (
     <Card id="course-input-card">
-      <div className="field">
-        <label htmlFor="courseName" className="label">
-          Course Name
-        </label>
-        <input ref={nameRef} type="text" id="courseName" />
-      </div>
-      <div className="row">
+      <form onSubmit={addCourse}>
         <div className="field">
-          <label htmlFor="grade" className="label">
-            Grade
-            <span aria-hidden="true">*</span>
+          <label htmlFor="courseName" className="label">
+            Course Name
           </label>
-          <select ref={gradeRef} id="grade">
-            <option value="A+">A+ / 12</option>
-            <option value="A">A / 11</option>
-            <option value="A-">A- / 10</option>
-            <option value="B+">B+ / 9</option>
-            <option value="B">B / 8</option>
-            <option value="B-">B- / 7</option>
-            <option value="C+">C+ / 6</option>
-            <option value="C">C / 5</option>
-            <option value="C-">C- / 4</option>
-            <option value="D+">D+ / 3</option>
-            <option value="D">D / 2</option>
-            <option value="D-">D- / 1</option>
-            <option value="F">F / 0</option>
-          </select>
+          <input ref={nameRef} type="text" id="courseName" />
         </div>
-        <div className="field">
-          <label htmlFor="units">
-            Units
-            <span aria-hidden="true">*</span>
-          </label>
-          <input ref={unitsRef} type="text" id="units" />
+        <div className="row">
+          <div className="field">
+            <label htmlFor="grade" className="label">
+              Grade
+              <span aria-hidden="true">*</span>
+            </label>
+            <select ref={gradeRef} id="grade">
+              <option value="A+">A+ / 12</option>
+              <option value="A">A / 11</option>
+              <option value="A-">A- / 10</option>
+              <option value="B+">B+ / 9</option>
+              <option value="B">B / 8</option>
+              <option value="B-">B- / 7</option>
+              <option value="C+">C+ / 6</option>
+              <option value="C">C / 5</option>
+              <option value="C-">C- / 4</option>
+              <option value="D+">D+ / 3</option>
+              <option value="D">D / 2</option>
+              <option value="D-">D- / 1</option>
+              <option value="F">F / 0</option>
+            </select>
+          </div>
+          <div className="field">
+            <label htmlFor="units">
+              Units
+              <span aria-hidden="true">*</span>
+            </label>
+            <input ref={unitsRef} defaultValue={3} type="text" id="units" />
+          </div>
         </div>
-      </div>
-      {error && <p className="error">{error}</p>}
-      <button className="primary" onClick={addCourse}>
-        Add Course
-      </button>
+        {error && <p className="error">{error}</p>}
+        <button className="primary" onClick={addCourse}>
+          Add Course
+        </button>
+      </form>
     </Card>
   );
 }
