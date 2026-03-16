@@ -6,6 +6,20 @@
   padding-bottom: 0.5em;
 }
 
+.footer {
+  display: flex;
+  width: 100%;
+  align-items: center;
+  gap: 4em;
+  padding-top: 0.5em;
+}
+
+.total {
+  display: flex;
+  flex-direction: column;
+  gap: 0.5em;
+}
+
 .column {
   width: 33%;
   display: flex;
