@@ -1,4 +1,4 @@
-.header {
+#course-list .header {
   display: flex;
   width: 100%;
   justify-content: space-between;
@@ -6,7 +6,7 @@
   padding-bottom: 0.5em;
 }
 
-.footer {
+#course-list .footer {
   display: flex;
   width: 100%;
   align-items: center;
@@ -61,4 +61,22 @@
 
 #course-list .row:last-child {
   border-bottom: none;
+}
+
+.grade,
+.units {
+  width: 20%;
+}
+
+.truncate {
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  display: block;
+}
+
+@media screen and (max-width: 800px) {
+  .delete-button {
+    margin-right: 0;
+  }
 }

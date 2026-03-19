@@ -30,15 +30,19 @@ export default function CourseList() {
       <ul className="courses">
         <div className="row">
           <p className="column">Course</p>
-          <p className="column">Grade</p>
-          <p className="column">Units</p>
+          <p className="column grade">Grade</p>
+          <p className="column units">Units</p>
           <p className="delete-button">{/* Delete */}</p>
         </div>
         {courses.map((course) => (
           <div className="row" key={course.id}>
-            <p className="column">{course.code}</p>
-            <p className="column">{course.grade}</p>
-            <p className="column">{course.units}</p>
+            <p className="column">
+              <span className="truncate">{course.code}</span>
+            </p>
+            <p className="column grade">{course.grade}</p>
+            <p className="column units">
+              <span className="truncate">{course.units}</span>
+            </p>
             <button
               className="delete-button"
               onClick={() => deleteCourse(course.id)}
