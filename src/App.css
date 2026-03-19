@@ -5,7 +5,7 @@
   --secondary-color: #f0f1ec;
   --background-color: #dad9d5;
   --text-color: #333333;
-  --secondary-text-color: #484848;
+  --secondary-text-color: #797979;
   --primary-hover-color: #4d0014;
 
   font-family: "Inter", sans-serif;
@@ -34,10 +34,6 @@ h6,
 p {
   margin: 0;
   line-height: 1;
-}
-
-label {
-  pointer-events: none;
 }
 
 input,

@@ -1,155 +1,66 @@
-import React, { useState, useRef, useContext } from "react";
-import { Button, Card, CardContent, Typography } from "@mui/material/";
-import { CourseListContext } from "../../Contexts/CourseListContext";
+import { useFileUpload } from "./file-upload/hooks";
+import Card from "./Card";
+import "./FileUpload.css";
+import { ReactComponent as UploadIcon } from "../../assets/upload-file-2-svgrepo-com.svg";
 
 export default function FileUpload() {
-  const [, setCourses] = useContext(CourseListContext);
-  const fileRef = useRef();
-  const [selectedFileName, setSelectedFileName] = useState("");
-  const [loading, setLoading] = useState(false);
-  const [errorMessage, setErrorMessage] = useState("");
-
-  if (errorMessage) {
-    fileRef.current.value = null;
-  }
-
-  const handleFileUpload = (e) => {
-    e.preventDefault();
-
-    const reader = new FileReader();
-    const file = fileRef.current.files[0];
-    setErrorMessage("");
-
-    if (!file) {
-      return;
-    }
-
-    if (file.type !== "application/pdf") {
-      setErrorMessage("Error: File is not a PDF");
-      return;
-    }
-    const MAX_FILE_SIZE = 1024 ** 2; // 1MB
-    if (file.size > MAX_FILE_SIZE) {
-      setErrorMessage("Error: File is too large");
-      return;
-    }
-
-    setLoading(true);
-    reader.onloadend = function () {
-      const base64string = reader.result.split(",")[1];
-      fetch(uploadURL(), {
-        method: "POST",
-        body: base64string,
-        headers: {
-          "Content-Type": "text/plain",
-        },
-      })
-        .then((response) => response.json())
-        .then((data) => {
-          if (data.length === 0) {
-            setErrorMessage("Unknown Error");
-            setLoading(false);
-            fetch(errorURL(), {
-              method: "GET",
-            });
-            console.log("Error: No courses found in transcript");
-            return;
-          }
-          data.forEach((course) => {
-            course.id = crypto.randomUUID();
-          });
-          setCourses((prevCourses) => [...prevCourses, ...data]);
-          setLoading(false);
-        })
-        .catch((error) => {
-          console.log(error);
-          setErrorMessage("Unknown Error");
-          setLoading(false);
-        });
-      fileRef.current.value = null;
-    };
-    reader.readAsDataURL(file);
-  };
-
-  const trimFileName = (fileName) => {
-    if (fileName.length > 15) {
-      return (
-        fileName.substring(0, 15) +
-        ".." +
-        fileName.substring(fileName.length - 4)
-      );
-    }
-    return fileName;
-  };
-
-  const handleFileChange = (e) => {
-    const file = e.target.files[0];
-    if (!file) {
-      setSelectedFileName("");
-      return;
-    }
-    setErrorMessage("");
-    setSelectedFileName(trimFileName(file.name));
-  };
-
-  const handleSubmitBtn = (e) => {
-    e.preventDefault();
-    handleFileUpload(e);
-    setSelectedFileName("");
-  };
+  const {
+    fileRef,
+    handleFileChange,
+    handleSubmitBtn,
+    handleFileClick,
+    errorMessage,
+    selectedFileName,
+    loading,
+  } = useFileUpload();
 
   return (
-    <Card sx={{ minHeight: "100%", width: "50%", marginLeft: "20px" }}>
-      <CardContent
-        sx={{
-          display: "flex",
-          justifyContent: "space-around",
-          alignItems: "center",
-          flexDirection: "column",
-          minHeight: "100%",
-        }}
-      >
-        <Button variant="contained" component="label">
-          Select File
-          <input
-            ref={fileRef}
-            type="file"
-            id="transcriptFile"
-            name="pdfFile"
-            accept=".pdf"
-            style={{ display: "none" }}
-            onChange={handleFileChange}
-          />
-        </Button>
-        <Typography noWrap>
-          Selected file:
-          <span style={{ fontWeight: "bold" }}>
-            {" "}
-            {errorMessage ? (
-              <span style={{ color: "red" }}>{errorMessage}</span>
+    <Card id="file-upload">
+      <div style={{ marginRight: "auto" }}>
+        <h3 style={{ "margin-right": "auto", paddingBottom: "0.5em" }}>
+          Upload Transcript
+        </h3>
+        <p
+          style={{ lineHeight: "1.2em", color: "var(--secondary-text-color)" }}
+        >
+          Import your unofficial transcript PDF to automatically calculate your
+          GPA
+        </p>
+      </div>
+      <form>
+        <input
+          ref={fileRef}
+          type="file"
+          id="transcriptFile"
+          name="pdfFile"
+          accept=".pdf"
+          style={{ display: "none" }}
+          onChange={handleFileChange}
+        />
+        <div className="drop-zone" onClick={handleFileClick}>
+          <UploadIcon width={20} height={20} />
+          <div>
+            {selectedFileName || errorMessage ? (
+              <>
+                Selected File:{" "}
+                <span>
+                  {" "}
+                  {errorMessage ? (
+                    <span style={{ color: "red" }}>{errorMessage}</span>
+                  ) : (
+                    selectedFileName
+                  )}{" "}
+                </span>
+              </>
             ) : (
-              selectedFileName
-            )}{" "}
-          </span>
-        </Typography>
-        <Button variant="contained" id="submitBtn" onClick={handleSubmitBtn}>
-          {loading ? <>Loading...</> : <>Submit</>}
-        </Button>
-      </CardContent>
+              "Select File"
+            )}
+          </div>
+        </div>
+        <button className="primary" onClick={handleSubmitBtn}>
+          {loading ? <>Loading...</> : <>Submit & Parse</>}
+        </button>
+      </form>
     </Card>
   );
 }
-
-const uploadURL = () => {
-  if (process.env.NODE_ENV === "production") {
-    return "https://macgradesweb.azurewebsites.net/api/upload";
-  }
-  return "http://localhost:7071/api/upload";
-};
-
-const errorURL = () => {
-  if (process.env.NODE_ENV === "production") {
-    return "https://macgradesweb.azurewebsites.net/api/log-error";
-  }
-  return "http://localhost:7071/api/log-error";
-};

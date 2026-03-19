@@ -35,6 +35,7 @@ export default function CourseInput() {
 
   return (
     <Card id="course-input-card">
+      <h3 style={{ "margin-right": "auto" }}>Add Course</h3>
       <form onSubmit={addCourse}>
         <div className="field">
           <label htmlFor="courseName" className="label">
@@ -72,10 +73,12 @@ export default function CourseInput() {
             <input ref={unitsRef} defaultValue={3} type="text" id="units" />
           </div>
         </div>
-        {error && <p className="error">{error}</p>}
-        <button className="primary" onClick={addCourse}>
-          Add Course
-        </button>
+        <div className="footer">
+          <p className="error">{error ? error : "\u00a0"}</p>
+          <button className="primary" onClick={addCourse}>
+            Add Course
+          </button>
+        </div>
       </form>
     </Card>
   );

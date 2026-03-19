@@ -1,0 +1,36 @@
+#file-upload {
+  gap: 1em;
+  justify-content: space-between;
+}
+
+#file-upload form {
+  display: contents;
+}
+
+.drop-zone {
+  border: 2px dashed #ccc;
+  border-radius: 10px;
+  padding: 20px;
+  text-align: center;
+  cursor: pointer;
+  transition: background-color 0.3s ease;
+  width: 100%;
+  min-height: 100px;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  gap: 0.5em;
+}
+
+.drop-zone:hover {
+  background-color: #e2e2de;
+}
+
+.drop-zone input {
+  display: none;
+}
+
+.drop-zone:dragover {
+  background-color: #e2e2de;
+}

@@ -20,7 +20,9 @@ const Home = () => {
             </div>
             <div className="left-bottom">
               <CourseInput />
-              {/* <FileUpload /> */}
+            </div>
+            <div className="left-bottom">
+              <FileUpload />
             </div>
           </div>
           <div className="right">
