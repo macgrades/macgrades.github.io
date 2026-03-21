@@ -2,11 +2,12 @@ import { useState, useCallback, useContext, useRef } from "react";
 import { CourseListContext } from "../../../Contexts/CourseListContext";
 
 export const useFileUpload = () => {
-  const [_, setCourses] = useContext(CourseListContext);
   const fileRef = useRef();
-  const [selectedFileName, setSelectedFileName] = useState("");
+  const [currentFile, setCurrentFile] = useState(null);
   const [loading, setLoading] = useState(false);
   const [errorMessage, setErrorMessage] = useState("");
+
+  const [_, setCourses] = useContext(CourseListContext);
 
   if (errorMessage) {
     fileRef.current.value = null;
@@ -16,11 +17,11 @@ export const useFileUpload = () => {
     e.preventDefault();
 
     const reader = new FileReader();
-    const file = fileRef.current.files[0];
+    const file = currentFile;
     setErrorMessage("");
 
     if (!file) {
-      return;
+      return false;
     }
 
     if (file.type !== "application/pdf") {
@@ -70,31 +71,23 @@ export const useFileUpload = () => {
     reader.readAsDataURL(file);
   };
 
-  const trimFileName = (fileName) => {
-    if (fileName.length > 15) {
-      return (
-        fileName.substring(0, 15) +
-        ".." +
-        fileName.substring(fileName.length - 4)
-      );
-    }
-    return fileName;
-  };
-
   const handleFileChange = (e) => {
     const file = e.target.files[0];
     if (!file) {
-      setSelectedFileName("");
       return;
     }
+    handleSetFile(file);
+  };
+
+  const handleSetFile = (file) => {
+    setCurrentFile(file);
     setErrorMessage("");
-    setSelectedFileName(trimFileName(file.name));
   };
 
   const handleSubmitBtn = (e) => {
     e.preventDefault();
     handleFileUpload(e);
-    setSelectedFileName("");
+    setCurrentFile(null);
   };
 
   const handleFileClick = (e) => {
@@ -103,8 +96,9 @@ export const useFileUpload = () => {
   };
 
   return {
+    currentFile,
+    setCurrentFile: handleSetFile,
     fileRef,
-    selectedFileName,
     loading,
     errorMessage,
     handleFileChange,
@@ -133,8 +127,7 @@ export const useDragAndDrop = (onDropCallback) => {
       setDragActive(false);
 
       if (e.dataTransfer.files && e.dataTransfer.files.length > 0) {
-        // Pass the dropped files to the provided callback
-        onDropCallback(Array.from(e.dataTransfer.files));
+        onDropCallback(Array.from(e.dataTransfer.files)[0]);
       }
     },
     [onDropCallback],
