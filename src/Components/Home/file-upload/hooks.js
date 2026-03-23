@@ -25,12 +25,12 @@ export const useFileUpload = () => {
     }
 
     if (file.type !== "application/pdf") {
-      setErrorMessage("Error: File is not a PDF");
+      setErrorMessage("File is not a PDF");
       return;
     }
     const MAX_FILE_SIZE = 1024 ** 2; // 1MB
     if (file.size > MAX_FILE_SIZE) {
-      setErrorMessage("Error: File is too large");
+      setErrorMessage("File is too large");
       return;
     }
 
@@ -47,7 +47,7 @@ export const useFileUpload = () => {
         .then((response) => response.json())
         .then((data) => {
           if (data.length === 0) {
-            setErrorMessage("Unknown Error");
+            setErrorMessage("No courses found in transcript");
             setLoading(false);
             fetch(errorURL(), {
               method: "GET",
