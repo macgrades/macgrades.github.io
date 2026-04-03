@@ -9,13 +9,26 @@
   --primary-hover-color: #4d0014;
 
   font-family: "Inter", sans-serif;
-  padding: 1.5em;
 }
 
 *,
 *::before,
 *::after {
   box-sizing: border-box;
+}
+
+#root {
+  display: flex;
+  flex-direction: column;
+  min-height: 100vh;
+  min-width: 380px;
+  padding: 1.5em;
+}
+
+@media (min-width: 800px) {
+  #root {
+    height: 100vh;
+  }
 }
 
 body {

@@ -35,7 +35,7 @@ export default function CourseInput() {
 
   return (
     <Card id="course-input-card">
-      <h3 style={{ "margin-right": "auto" }}>Add Course</h3>
+      <h3 style={{ marginRight: "auto" }}>Add Course</h3>
       <form onSubmit={addCourse}>
         <div className="field">
           <label htmlFor="courseName" className="label">

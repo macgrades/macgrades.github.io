@@ -24,7 +24,7 @@ export default function FileUpload() {
   return (
     <Card id="file-upload">
       <div style={{ marginRight: "auto" }}>
-        <h3 style={{ "margin-right": "auto", paddingBottom: "0.5em" }}>
+        <h3 style={{ marginRight: "auto", paddingBottom: "0.5em" }}>
           Upload Transcript
         </h3>
         <p

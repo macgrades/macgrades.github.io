@@ -1,3 +1,7 @@
+.home-container {
+  display: contents;
+}
+
 .home-content {
   display: flex;
   gap: 20px;
