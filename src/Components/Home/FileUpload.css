@@ -11,6 +11,28 @@
   width: 100%;
 }
 
+#file-upload .title-container {
+  margin-right: auto;
+}
+
+#file-upload .title-container h3 {
+  margin-right: auto;
+  padding-bottom: 0.5em;
+}
+
+#file-upload .title-container p {
+  line-height: 1.2em;
+  color: var(--secondary-text-color);
+}
+
+#transcript-file {
+  display: none;
+}
+
+.selected-file {
+  color: var(--secondary-text-color);
+}
+
 .drop-zone {
   border: 2px dashed #ccc;
   border-radius: 10px;

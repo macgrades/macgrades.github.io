@@ -23,13 +23,9 @@ export default function FileUpload() {
 
   return (
     <Card id="file-upload">
-      <div style={{ marginRight: "auto" }}>
-        <h3 style={{ marginRight: "auto", paddingBottom: "0.5em" }}>
-          Upload Transcript
-        </h3>
-        <p
-          style={{ lineHeight: "1.2em", color: "var(--secondary-text-color)" }}
-        >
+      <div className="title-container">
+        <h3>Upload Transcript</h3>
+        <p>
           Import your unofficial transcript PDF to automatically calculate your
           GPA
         </p>
@@ -38,10 +34,9 @@ export default function FileUpload() {
         <input
           ref={fileRef}
           type="file"
-          id="transcriptFile"
+          id="transcript-file"
           name="pdfFile"
           accept=".pdf"
-          style={{ display: "none" }}
           onChange={handleFileChange}
         />
         <div
@@ -79,9 +74,7 @@ const DropZoneLabel = ({ currentFileName, errorMessage }) => {
   }
   if (currentFileName) {
     return (
-      <span style={{ color: "var(--secondary-text-color)" }}>
-        Selected File: {currentFileName}
-      </span>
+      <span className="selected-file">Selected File: {currentFileName}</span>
     );
   }
 };

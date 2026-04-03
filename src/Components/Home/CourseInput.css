@@ -2,6 +2,10 @@
   gap: 1rem;
 }
 
+#course-input-card h3 {
+  margin-right: auto;
+}
+
 #course-input-card .row {
   display: flex;
   flex-direction: row;
