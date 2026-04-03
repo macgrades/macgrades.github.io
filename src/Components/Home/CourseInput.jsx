@@ -75,9 +75,7 @@ export default function CourseInput() {
         </div>
         <div className="footer">
           <p className="error">{error ? error : "\u00a0"}</p>
-          <button className="primary" onClick={addCourse}>
-            Add Course
-          </button>
+          <button className="primary">Add Course</button>
         </div>
       </form>
     </Card>
