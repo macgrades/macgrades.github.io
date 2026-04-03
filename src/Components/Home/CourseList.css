@@ -59,6 +59,12 @@
   padding: 0.8em 0.5em;
 }
 
+#course-list .row:first-child {
+  position: sticky;
+  top: 0;
+  z-index: 1;
+  background-color: var(--secondary-color);
+}
 #course-list .row:last-child {
   border-bottom: none;
 }
@@ -75,8 +81,19 @@
   display: block;
 }
 
+.empty-message {
+  text-align: center;
+  color: var(--secondary-text-color);
+  width: 100%;
+  margin: auto 0;
+}
+
 @media screen and (max-width: 800px) {
   .delete-button {
     margin-right: 0;
+  }
+
+  .courses {
+    min-height: 200px;
   }
 }

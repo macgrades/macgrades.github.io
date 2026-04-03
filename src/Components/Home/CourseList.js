@@ -34,6 +34,9 @@ export default function CourseList() {
           <p className="column units">Units</p>
           <p className="delete-button">{/* Delete */}</p>
         </div>
+        {courses.length === 0 && (
+          <div className="empty-message">No courses added yet.</div>
+        )}
         {courses.map((course) => (
           <div className="row" key={course.id}>
             <p className="column">
