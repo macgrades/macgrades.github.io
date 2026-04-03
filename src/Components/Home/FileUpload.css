@@ -7,15 +7,18 @@
   display: contents;
 }
 
+#file-upload button.primary {
+  width: 100%;
+}
+
 .drop-zone {
   border: 2px dashed #ccc;
   border-radius: 10px;
-  padding: 20px;
   text-align: center;
   cursor: pointer;
   transition: background-color 0.3s ease;
   width: 100%;
-  min-height: 100px;
+  height: 100%;
   display: flex;
   flex-direction: column;
   justify-content: center;
@@ -40,4 +43,11 @@
   display: flex;
   align-items: center;
   gap: 0.2em;
+}
+
+@media screen and (max-width: 800px) {
+  .drop-zone {
+    padding: 20px;
+    min-height: 100px;
+  }
 }
