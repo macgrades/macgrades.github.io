@@ -1,5 +1,4 @@
-import React, { useState } from "react";
-import { CourseListContext } from "../../Contexts/CourseListContext";
+import { CourseListProvider } from "../../Contexts/CourseListContext";
 import CourseList from "./CourseList";
 import FileUpload from "./FileUpload";
 import CourseInput from "./CourseInput";
@@ -8,11 +7,9 @@ import GpaDisplay from "./GpaDisplay";
 import "./Home.css";
 
 const Home = () => {
-  const [courses, setCourses] = useState([]);
-
   return (
     <div className="home-container">
-      <CourseListContext.Provider value={[courses, setCourses]}>
+      <CourseListProvider>
         <div className="home-content">
           <div className="left">
             <div className="left-top">
@@ -29,7 +26,7 @@ const Home = () => {
             <CourseList />
           </div>
         </div>
-      </CourseListContext.Provider>
+      </CourseListProvider>
     </div>
   );
 };
