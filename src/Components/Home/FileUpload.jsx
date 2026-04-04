@@ -56,7 +56,7 @@ export default function FileUpload() {
             errorMessage={errorMessage}
           />
         </div>
-        <button className="primary" onClick={handleSubmitBtn}>
+        <button className="primary" onClick={loading ? null : handleSubmitBtn}>
           {loading ? <>Loading...</> : <>Submit & Parse</>}
         </button>
       </form>
