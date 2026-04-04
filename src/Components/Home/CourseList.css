@@ -1,0 +1,99 @@
+#course-list .header {
+  display: flex;
+  width: 100%;
+  justify-content: space-between;
+  align-items: center;
+  padding-bottom: 0.5em;
+}
+
+#course-list .footer {
+  display: flex;
+  width: 100%;
+  align-items: center;
+  gap: 4em;
+  padding-top: 0.5em;
+}
+
+.total {
+  display: flex;
+  flex-direction: column;
+  gap: 0.5em;
+}
+
+.column {
+  width: 33%;
+  display: flex;
+  align-items: center;
+}
+
+.courses {
+  padding: 0;
+  padding-right: 0.5em;
+  margin: 0;
+  display: flex;
+  flex-direction: column;
+  width: 100%;
+  justify-content: start;
+  height: 100%;
+  overflow-y: auto;
+  scrollbar-gutter: stable;
+}
+
+.delete-button {
+  color: var(--primary-color);
+  min-width: 26px;
+  width: 26px;
+  transition: filter 0.3s ease;
+  margin-right: 2em;
+}
+
+.delete-button:hover {
+  filter: brightness(2);
+}
+
+#course-list .row {
+  display: flex;
+  width: 100%;
+  justify-content: space-between;
+  border-bottom: 1px solid #ccc;
+  padding: 0.8em 0.5em;
+}
+
+#course-list .row:first-child {
+  position: sticky;
+  top: 0;
+  z-index: 1;
+  background-color: var(--secondary-color);
+}
+#course-list .row:last-child {
+  border-bottom: none;
+}
+
+.grade,
+.units {
+  width: 20%;
+}
+
+.truncate {
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  display: block;
+}
+
+.empty-message {
+  text-align: center;
+  color: var(--secondary-text-color);
+  width: 100%;
+  margin: auto 0;
+}
+
+@media screen and (max-width: 800px) {
+  .delete-button {
+    margin-right: 0;
+  }
+
+  .courses {
+    min-height: 200px;
+  }
+}

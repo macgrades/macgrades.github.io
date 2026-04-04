@@ -1,0 +1,131 @@
+@import url("https://rsms.me/inter/inter.css");
+
+:root {
+  --primary-color: #800020;
+  --secondary-color: #f0f1ec;
+  --background-color: #dad9d5;
+  --text-color: #333333;
+  --secondary-text-color: #797979;
+  --primary-hover-color: #4d0014;
+
+  font-family: "Inter", sans-serif;
+}
+
+*,
+*::before,
+*::after {
+  box-sizing: border-box;
+}
+
+#root {
+  display: flex;
+  flex-direction: column;
+  min-height: 100vh;
+  min-width: 380px;
+  padding: 1.5em;
+}
+
+@media (min-width: 800px) {
+  #root {
+    height: 100vh;
+    min-height: 850px;
+  }
+}
+
+body {
+  background-color: var(--background-color);
+  color: var(--text-color);
+  margin: 0;
+  padding: 0;
+}
+
+h1,
+h2,
+h3,
+h4,
+h5,
+h6,
+p {
+  margin: 0;
+  line-height: 1;
+}
+
+input,
+select {
+  width: 100%;
+  border: 1px solid #ccc;
+  border-radius: 1.5rem;
+  height: 2.5rem;
+  padding: 0 1rem;
+  background-color: var(--secondary-color);
+  transition: border-color 0.1s ease;
+  outline: none;
+}
+
+input:hover,
+select:hover {
+  border-color: var(--primary-color);
+}
+
+input:focus,
+select:focus {
+  border: 2px solid #ccc;
+  border-color: var(--primary-color);
+  transition: none;
+}
+
+select {
+  appearance: none;
+  padding: 10px 40px 10px 12px;
+  cursor: pointer;
+  font-family: inherit;
+  font-size: 1rem;
+  color: #333;
+  background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='24' height='24' viewBox='0 0 24 24' fill='none' stroke='%23333333' stroke-width='2' stroke-linecap='round' stroke-linejoin='round'%3E%3Cpolyline points='6 9 12 15 18 9'%3E%3C/polyline%3E%3C/svg%3E");
+  background-repeat: no-repeat;
+  background-position: right 12px center;
+  background-size: 16px;
+}
+
+button {
+  background-color: transparent;
+  border: none;
+  cursor: pointer;
+}
+
+button.primary {
+  background-color: var(--primary-color);
+  color: white;
+  border: none;
+  border-radius: 0.5rem;
+  padding: 0.5rem 1.5rem;
+  cursor: pointer;
+  transition: background-color 0.3s ease;
+}
+
+button.secondary {
+  background-color: var(--secondary-color);
+  color: var(--primary-color);
+  border: 2px solid var(--primary-color);
+  padding: 0.5em 1em;
+  cursor: pointer;
+  border-radius: 8px;
+  font-weight: bold;
+  transition:
+    background-color 0.3s ease,
+    color 0.3s ease;
+}
+
+button.primary:hover {
+  background-color: var(--primary-hover-color);
+}
+
+button.secondary:hover {
+  background-color: var(--primary-color);
+  color: white;
+}
+
+.error {
+  color: var(--primary-color);
+  font-size: 0.9em;
+}

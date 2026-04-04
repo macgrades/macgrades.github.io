@@ -1,0 +1,46 @@
+#course-input-card {
+  gap: 1rem;
+}
+
+#course-input-card h3 {
+  margin-right: auto;
+}
+
+#course-input-card .row {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  width: 100%;
+  gap: 1rem;
+}
+
+#course-input-card select {
+  padding: 0 1rem;
+}
+
+#course-input-card .field {
+  display: flex;
+  flex-direction: column;
+  gap: 0.5rem;
+  width: 100%;
+}
+
+.field label {
+  pointer-events: none;
+}
+
+#course-input-card button {
+  width: 100%;
+}
+
+#course-input-card form {
+  display: contents;
+}
+
+#course-input-card .footer {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 0.5rem;
+  width: 100%;
+}
