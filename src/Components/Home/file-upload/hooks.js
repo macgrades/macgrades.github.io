@@ -30,7 +30,7 @@ export const useFileUpload = () => {
     }
     const MAX_FILE_SIZE = 1024 ** 2; // 1MB
     if (file.size > MAX_FILE_SIZE) {
-      setErrorMessage("File is too large");
+      setErrorMessage("File is too large (1 MB max)");
       return;
     }
 
