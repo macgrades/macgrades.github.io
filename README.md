@@ -5,7 +5,9 @@ Web app for calculating McMaster University student GPA using unofficial transcr
 ## Installation
 
 `asdf install`
+
 `npm install`
+
 `npm start`
 
 ## Deploy
