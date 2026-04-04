@@ -28,6 +28,7 @@
 @media (min-width: 800px) {
   #root {
     height: 100vh;
+    min-height: 850px;
   }
 }
 

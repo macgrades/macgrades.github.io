@@ -6,7 +6,7 @@
   display: flex;
   gap: 20px;
   justify-content: space-evenly;
-  height: 85vh;
+  height: 100%;
   min-height: 450px;
 }
 
