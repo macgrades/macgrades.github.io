@@ -1,5 +1,5 @@
 import { useContext, useRef, useState } from "react";
-import { CourseListContext } from "../../Contexts/CourseListContext";
+import { CourseListContext } from "../../contexts/CourseListContext";
 import Card from "./Card";
 import "./CourseInput.css";
 

@@ -1,9 +1,9 @@
 import { useContext } from "react";
-import { CourseListContext } from "../../Contexts/CourseListContext";
+import { CourseListContext } from "../../contexts/CourseListContext";
 import Card from "./Card";
 import "./CourseList.css";
 import { ReactComponent as TrashIcon } from "../../assets/trash-svgrepo-com.svg";
-import { getTotals } from "../../calculate/gpa";
+import { getTotals } from "gpa-calculator/gpa";
 
 export default function CourseList() {
   const [courses, setCourses] = useContext(CourseListContext);
@@ -44,7 +44,9 @@ export default function CourseList() {
             </p>
             <p className="column grade">{course.grade}</p>
             <p className="column units">
-              <span className="truncate">{course.units}</span>
+              <span className="truncate">
+                {parseFloat(course.units).toFixed(2)}
+              </span>
             </p>
             <button
               className="delete-button"
