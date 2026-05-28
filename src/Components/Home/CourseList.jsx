@@ -44,7 +44,9 @@ export default function CourseList() {
             </p>
             <p className="column grade">{course.grade}</p>
             <p className="column units">
-              <span className="truncate">{course.units}</span>
+              <span className="truncate">
+                {parseFloat(course.units).toFixed(2)}
+              </span>
             </p>
             <button
               className="delete-button"
