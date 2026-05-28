@@ -53,7 +53,7 @@ export const useFileUpload = () => {
       })
       .catch((error) => {
         console.log(error);
-        setErrorMessage("Unknown Error");
+        setErrorMessage("Unknown Error Parsing PDF");
         setLoading(false);
       });
     fileRef.current.value = null;
