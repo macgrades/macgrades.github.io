@@ -1,6 +1,6 @@
 import { useContext } from "react";
 
-import { CourseListContext } from "../../Contexts/CourseListContext";
+import { CourseListContext } from "../../contexts/CourseListContext";
 import "./GpaDisplay.css";
 import Card from "./Card";
 import { calculateMacGPA, calculateStandardGPA } from "gpa-calculator/gpa";

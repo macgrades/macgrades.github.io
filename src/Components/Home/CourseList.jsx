@@ -1,5 +1,5 @@
 import { useContext } from "react";
-import { CourseListContext } from "../../Contexts/CourseListContext";
+import { CourseListContext } from "../../contexts/CourseListContext";
 import Card from "./Card";
 import "./CourseList.css";
 import { ReactComponent as TrashIcon } from "../../assets/trash-svgrepo-com.svg";

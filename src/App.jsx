@@ -1,6 +1,6 @@
 import { useEffect } from "react";
-import Home from "./Components/Home/Home";
-import Header from "./Components/Header/Header";
+import Home from "./components/Home/Home";
+import Header from "./components/Header/Header";
 
 import "./App.css";
 

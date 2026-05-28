@@ -1,4 +1,4 @@
-import { CourseListProvider } from "../../Contexts/CourseListContext";
+import { CourseListProvider } from "../../contexts/CourseListContext";
 import CourseList from "./CourseList";
 import FileUpload from "./FileUpload";
 import CourseInput from "./CourseInput";
