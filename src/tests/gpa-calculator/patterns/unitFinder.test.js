@@ -5,6 +5,11 @@ it("returns attempted units on completed courses", () => {
   expect(findUnits(text)).toBe(3);
 });
 
+it("returns attempted units on 10+ unit courses", () => {
+  const text = "13.00/13.00";
+  expect(findUnits(text)).toBe(13);
+});
+
 it("extracts units from a course line", () => {
   const text = "MATH 1ZA3 Engineering Mathematics I 3.00/3.00 A+";
   expect(findUnits(text)).toBe(3);
