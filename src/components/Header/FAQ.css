@@ -1,5 +1,4 @@
 .faq-icon {
-  margin-right: 8px;
-  margin-top: auto;
-  margin-bottom: 16px;
+  position: absolute;
+  right: 8px;
 }

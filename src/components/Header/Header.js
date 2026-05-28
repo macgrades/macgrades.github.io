@@ -3,12 +3,12 @@ import "./Header.css";
 
 const Header = () => {
   return (
-    <header className="banner">
-      <div className="title">
-        <h1>MacGrades</h1>
+    <header className="title">
+      <h1>MacGrades</h1>
+      <div className="subtitle">
         <p>McMaster GPA Calculator</p>
+        <FAQ />
       </div>
-      <FAQ />
     </header>
   );
 };
