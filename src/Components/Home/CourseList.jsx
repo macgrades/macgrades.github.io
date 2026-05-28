@@ -3,7 +3,7 @@ import { CourseListContext } from "../../Contexts/CourseListContext";
 import Card from "./Card";
 import "./CourseList.css";
 import { ReactComponent as TrashIcon } from "../../assets/trash-svgrepo-com.svg";
-import { getTotals } from "../../calculate/gpa";
+import { getTotals } from "gpa-calculator/gpa";
 
 export default function CourseList() {
   const [courses, setCourses] = useContext(CourseListContext);
