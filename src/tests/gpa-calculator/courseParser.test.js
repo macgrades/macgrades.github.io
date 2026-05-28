@@ -122,3 +122,11 @@ it("parses multi-term courses", () => {
     },
   ]);
 });
+
+it("returns an empty array if given an empty array", () => {
+  const transcriptLines = [];
+
+  const courses = getCourses(transcriptLines);
+
+  expect(courses).toEqual([]);
+});
