@@ -1,4 +1,39 @@
-.faq-icon {
+.faq-container {
   position: absolute;
   right: 8px;
+  cursor: pointer;
+}
+
+.faq-tooltip {
+  position: absolute;
+  top: calc(100%);
+  right: 0;
+  width: 50vw;
+  background: #fff;
+  border: 1px solid #ccc;
+  border-radius: 8px;
+  padding: 12px;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15);
+  opacity: 0;
+  visibility: hidden;
+  transition:
+    opacity 0.15s ease,
+    visibility 0.15s ease;
+  pointer-events: none;
+  z-index: 100;
+  font-size: 0.85rem;
+  line-height: 1.4;
+  text-align: left;
+}
+
+.faq-tooltip a {
+  color: var(--primary-color);
+  text-decoration: underline;
+}
+
+.faq-container:hover .faq-tooltip,
+.faq-container:focus-within .faq-tooltip {
+  opacity: 1;
+  visibility: visible;
+  pointer-events: auto;
 }
