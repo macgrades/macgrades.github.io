@@ -17,6 +17,7 @@ export const useFileUpload = () => {
 
   const handleFileUpload = (e) => {
     e.preventDefault();
+    logVisit();
 
     const file = currentFile;
     setErrorMessage("");
@@ -127,16 +128,9 @@ export const useDragAndDrop = (onDropCallback) => {
   };
 };
 
-const uploadURL = () => {
+const logVisit = () => {
   if (process.env.NODE_ENV === "production") {
-    return "https://macgradesweb.azurewebsites.net/api/upload";
+    fetch("https://macgradesweb.azurewebsites.net/api/visit");
   }
-  return "http://localhost:7071/api/upload";
-};
-
-const errorURL = () => {
-  if (process.env.NODE_ENV === "production") {
-    return "https://macgradesweb.azurewebsites.net/api/log-error";
-  }
-  return "http://localhost:7071/api/log-error";
+  console.log("Visited");
 };
