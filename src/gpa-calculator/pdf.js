@@ -6,7 +6,7 @@ export const parsePDFtoTextLines = async (file) => {
 
     const { text } = await extractText(buffer);
 
-    return text.split("\n");
+    return text.join("\n").split("\n");
   } catch (error) {
     console.error("Error parsing PDF:", error);
   }
