@@ -1,5 +1,7 @@
+import { getCourses } from "gpa-calculator/courseParser";
+import { parsePDFtoTextLines } from "gpa-calculator/pdf";
 import { useState, useCallback, useContext, useRef } from "react";
-import { CourseListContext } from "../../../Contexts/CourseListContext";
+import { CourseListContext } from "../../../contexts/CourseListContext";
 
 export const useFileUpload = () => {
   const fileRef = useRef();
@@ -7,7 +9,7 @@ export const useFileUpload = () => {
   const [loading, setLoading] = useState(false);
   const [errorMessage, setErrorMessage] = useState("");
 
-  const [_, setCourses] = useContext(CourseListContext);
+  const [, setCourses] = useContext(CourseListContext);
 
   if (errorMessage) {
     fileRef.current.value = null;
@@ -16,7 +18,6 @@ export const useFileUpload = () => {
   const handleFileUpload = (e) => {
     e.preventDefault();
 
-    const reader = new FileReader();
     const file = currentFile;
     setErrorMessage("");
 
@@ -35,40 +36,26 @@ export const useFileUpload = () => {
     }
 
     setLoading(true);
-    reader.onloadend = function () {
-      const base64string = reader.result.split(",")[1];
-      fetch(uploadURL(), {
-        method: "POST",
-        body: base64string,
-        headers: {
-          "Content-Type": "text/plain",
-        },
-      })
-        .then((response) => response.json())
-        .then((data) => {
-          if (data.length === 0) {
-            setErrorMessage("No courses found in transcript");
-            setLoading(false);
-            fetch(errorURL(), {
-              method: "GET",
-            });
-            console.log("Error: No courses found in transcript");
-            return;
-          }
-          data.forEach((course) => {
+    parsePDFtoTextLines(file)
+      .then((lines) => {
+        const courses = getCourses(lines);
+        if (courses.length === 0) {
+          setErrorMessage("No courses found in transcript");
+          setLoading(false);
+        } else {
+          courses.forEach((course) => {
             course.id = crypto.randomUUID();
           });
-          setCourses((prevCourses) => [...prevCourses, ...data]);
+          setCourses((prevCourses) => [...prevCourses, ...courses]);
           setLoading(false);
-        })
-        .catch((error) => {
-          console.log(error);
-          setErrorMessage("Unknown Error");
-          setLoading(false);
-        });
-      fileRef.current.value = null;
-    };
-    reader.readAsDataURL(file);
+        }
+      })
+      .catch((error) => {
+        console.log(error);
+        setErrorMessage("Unknown Error");
+        setLoading(false);
+      });
+    fileRef.current.value = null;
   };
 
   const handleFileChange = (e) => {
