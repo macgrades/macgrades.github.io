@@ -131,6 +131,7 @@ export const useDragAndDrop = (onDropCallback) => {
 const logVisit = () => {
   if (process.env.NODE_ENV === "production") {
     fetch("https://macgradesweb.azurewebsites.net/api/visit");
+  } else {
+    console.log("Visited");
   }
-  console.log("Visited");
 };
