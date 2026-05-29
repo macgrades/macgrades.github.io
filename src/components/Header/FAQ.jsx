@@ -6,24 +6,60 @@ const FAQ = () => {
     <div className="faq-container">
       <QuestionMarkIcon width={30} height={30} />
       <div className="faq-tooltip">
-        <p>
-          GPA is calculated using McMaster's 12-point scale based on your course
-          grades and units.
-        </p>
-        <p>
-          Your data stays completely private — all processing is done locally in
-          your browser. Nothing is sent to any server.
-        </p>
-        <p>
-          Found an issue? Report it at{" "}
-          <a
-            href="https://github.com/macgrades/macgrades.github.io"
-            target="_blank"
-            rel="noopener noreferrer"
-          >
-            github.com/macgrades/macgrades.github.io
-          </a>
-        </p>
+        <div className="faq-section">
+          <h3>How does it work?</h3>
+          <p>
+            GPA is calculated based on your graded course grades and units (i.e.
+            A+ to F, not T, MT, COM, W, etc.), as outlined{" "}
+            <a
+              href="https://registrar.mcmaster.ca/exams-grades/grades/#tab-20"
+              target="_blank"
+              rel="noopener noreferrer"
+            >
+              here
+            </a>
+            . The 4.0 scale GPA is calculated using the same process, but with
+            the conversion table provided{" "}
+            <a
+              href="https://registrar.mcmaster.ca/exams-grades/grades/#tab-10"
+              target="_blank"
+              rel="noopener noreferrer"
+            >
+              here
+            </a>
+            .
+          </p>
+        </div>
+        <div className="faq-section">
+          <h3>Is my data private?</h3>
+          <p>
+            Your data stays completely private. All processing of your
+            transcript is done locally in your browser. The code is open source
+            and available for review{" "}
+            <a
+              href="https://github.com/macgrades/macgrades.github.io"
+              target="_blank"
+              rel="noopener noreferrer"
+            >
+              here
+            </a>
+            .
+          </p>
+        </div>
+        <div className="faq-section">
+          <h3>Something not working?</h3>
+          <p>
+            Submit an issue at{" "}
+            <a
+              href="https://github.com/macgrades/macgrades.github.io/issues/new"
+              target="_blank"
+              rel="noopener noreferrer"
+            >
+              here
+            </a>
+            .
+          </p>
+        </div>
       </div>
     </div>
   );

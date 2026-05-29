@@ -12,8 +12,6 @@
 
 .title p {
   margin: 0;
-  font-size: 1.5rem;
-  line-height: 1;
 }
 
 .subtitle {
@@ -21,4 +19,6 @@
   align-items: center;
   justify-content: space-between;
   position: relative;
+  font-size: 1.5rem;
+  line-height: 1;
 }

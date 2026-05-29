@@ -4,12 +4,21 @@
   cursor: pointer;
 }
 
+.faq-section {
+  display: grid;
+  gap: 4px;
+}
+
+.faq-section p {
+  line-height: 1.1;
+}
+
 .faq-tooltip {
   position: absolute;
   top: calc(100%);
   right: 0;
   width: 50vw;
-  background: #fff;
+  background: var(--secondary-color);
   border: 1px solid #ccc;
   border-radius: 8px;
   padding: 12px;
@@ -21,9 +30,11 @@
     visibility 0.15s ease;
   pointer-events: none;
   z-index: 100;
-  font-size: 0.85rem;
-  line-height: 1.4;
+  font-size: 1rem;
+  line-height: 1.5;
   text-align: left;
+  display: grid;
+  gap: 8px;
 }
 
 .faq-tooltip a {
