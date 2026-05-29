@@ -1,0 +1,64 @@
+.faq-container {
+  position: relative;
+  display: inline-flex;
+}
+
+.faq-trigger {
+  background-color: transparent;
+  border: none;
+  padding: 0;
+  display: inline-flex;
+  align-items: center;
+  cursor: pointer;
+}
+
+.faq-section {
+  display: grid;
+  gap: 4px;
+}
+
+.faq-section p {
+  line-height: 1.1;
+}
+
+.faq-tooltip {
+  position: absolute;
+  top: calc(100%);
+  right: 0;
+  width: 50vw;
+  background: var(--secondary-color);
+  border: 1px solid #ccc;
+  border-radius: 8px;
+  padding: 12px;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15);
+  opacity: 0;
+  visibility: hidden;
+  transition:
+    opacity 0.15s ease,
+    visibility 0.15s ease;
+  pointer-events: none;
+  z-index: 100;
+  font-size: 1rem;
+  line-height: 1.5;
+  text-align: left;
+  display: grid;
+  gap: 8px;
+}
+
+.faq-tooltip a {
+  color: var(--primary-color);
+  text-decoration: underline;
+}
+
+.faq-container:hover .faq-tooltip,
+.faq-container:focus-within .faq-tooltip {
+  opacity: 1;
+  visibility: visible;
+  pointer-events: auto;
+}
+
+@media screen and (max-width: 800px) {
+  .faq-tooltip {
+    width: 90vw;
+  }
+}

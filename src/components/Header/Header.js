@@ -1,13 +1,16 @@
+import FAQ from "components/Header/FAQ";
 import "./Header.css";
 
 const Header = () => {
   return (
-    <header className="banner">
+    <header className="title">
       <h1>MacGrades</h1>
-      <p>McMaster GPA Calculator</p>
+      <div className="subtitle">
+        <p>McMaster GPA Calculator</p>
+        <FAQ />
+      </div>
     </header>
   );
 };
 
 export default Header;
-
