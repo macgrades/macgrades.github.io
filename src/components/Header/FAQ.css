@@ -1,5 +1,4 @@
 .faq-container {
-  position: absolute;
   right: 8px;
   cursor: pointer;
 }
@@ -47,4 +46,10 @@
   opacity: 1;
   visibility: visible;
   pointer-events: auto;
+}
+
+@media screen and (max-width: 800px) {
+  .faq-tooltip {
+    width: 90vw;
+  }
 }
