@@ -1,5 +1,14 @@
 .faq-container {
-  right: 8px;
+  position: relative;
+  display: inline-flex;
+}
+
+.faq-trigger {
+  background-color: transparent;
+  border: none;
+  padding: 0;
+  display: inline-flex;
+  align-items: center;
   cursor: pointer;
 }
 

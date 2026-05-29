@@ -4,8 +4,15 @@ import "./FAQ.css";
 const FAQ = () => {
   return (
     <div className="faq-container">
-      <QuestionMarkIcon width={30} height={30} />
-      <div className="faq-tooltip">
+      <button type="button" className="faq-trigger" aria-label="FAQ">
+        <QuestionMarkIcon
+          aria-hidden="true"
+          focusable="false"
+          width={30}
+          height={30}
+        />
+      </button>
+      <div className="faq-tooltip" role="tooltip">
         <div className="faq-section">
           <h3>How does it work?</h3>
           <p>
