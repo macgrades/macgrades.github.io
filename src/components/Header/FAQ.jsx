@@ -58,7 +58,7 @@ const FAQ = () => {
           <p>
             Submit an issue at{" "}
             <a
-              href="https://github.com/macgrades/macgrades.github.io/issues/new"
+              href="https://github.com/macgrades/macgrades.github.io/issues/new?template=bug_report.md"
               target="_blank"
               rel="noopener noreferrer"
             >
