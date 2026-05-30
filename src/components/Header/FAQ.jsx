@@ -56,7 +56,7 @@ const FAQ = () => {
         <div className="faq-section">
           <h3>Something not working?</h3>
           <p>
-            Submit an issue at{" "}
+            Submit an issue{" "}
             <a
               href="https://github.com/macgrades/macgrades.github.io/issues/new?template=bug_report.md"
               target="_blank"
